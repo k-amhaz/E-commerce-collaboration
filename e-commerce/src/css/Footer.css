@@ -1,1 +1,78 @@
-/*# sourceMappingURL=Footer.css.map */
+body {
+  min-height: 100vh;
+}
+body .footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #eeeffb;
+  margin-top: 100px;
+}
+body .footer .footer-links {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  padding-bottom: 100px;
+}
+body .footer .footer-links h5 {
+  font-family: "Josefin Sans";
+  font-size: 22px;
+  line-height: 26px;
+  color: #000000;
+}
+body .footer .footer-links p {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #8a8fb9;
+}
+body .footer .footer-links .footer-info {
+  display: flex;
+  flex-direction: column;
+}
+body .footer .footer-links .footer-info .footer-title {
+  font-family: "Josefin Sans";
+  font-size: 38px;
+  line-height: 45px;
+  color: #fb2e86;
+}
+body .footer .footer-links .footer-info .footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+body .footer footer {
+  width: 100%;
+  height: 55px;
+  background-color: #e7e4f8;
+}
+body .footer footer .footer-bottom-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20%;
+}
+body .footer footer .footer-bottom-container p {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  color: #9da0ae;
+}
+body .footer footer .footer-bottom-container p span {
+  font-weight: 800;
+  color: #737580;
+}
+body .footer footer .footer-bottom-container .footer-icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 15px;
+}
+body .footer footer .footer-bottom-container .footer-icons i {
+  font-size: 20px;
+  color: #525252;
+}/*# sourceMappingURL=Footer.css.map */
