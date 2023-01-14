@@ -15,7 +15,7 @@ export default function Footer() {
             </div>
             <div className="footer-email footer-contact">
               <i className="fa-solid fa-envelope"></i>
-              <p>example@kocode.contact</p>
+              <p>ex@kocode.contact</p>
             </div>
           </div>
           <div className="footer-pages">

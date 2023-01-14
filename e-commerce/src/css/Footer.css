@@ -12,6 +12,8 @@ body .footer .footer-links {
   display: flex;
   align-items: flex-start;
   justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 70px;
   padding-bottom: 100px;
 }
 body .footer .footer-links h5 {
