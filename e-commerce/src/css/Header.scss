@@ -13,6 +13,14 @@
         .up-header-container {
             color:  white;
             height: 44px;
+            .right-menu {
+                div {
+                    cursor: pointer;
+                }
+            }
+            .bi-cart {
+                cursor: pointer;
+            }
         }
     }
 
