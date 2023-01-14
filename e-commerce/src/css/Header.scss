@@ -1,3 +1,27 @@
 .header {
-    background-color: black;
+
+    p {
+        margin: 0 !important;  
+        padding: 0 !important;
+        font-size: 16px !important;
+        color: #F1F1F1 !important;
+        font-family: 'Josefin Sans';
+    }
+
+    .up-header {
+        background-color: #7E33E0;
+        .up-header-container {
+            color:  white;
+            height: 44px;
+        }
+    }
+
+    .down-header {
+        background-color: white;
+    }
+
+    .bi-cart {
+        font-size: 18px;
+    }
+
 }
