@@ -7,6 +7,9 @@
   letter-spacing: 0em;
   text-align: left;
 }
+.navbar li.active {
+  color: #FB2E86 !important;
+}
 .navbar .navbar-brand {
   font-size: 25px;
   font-weight: bold;
