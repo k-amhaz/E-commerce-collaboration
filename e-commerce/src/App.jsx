@@ -10,6 +10,15 @@ function App() {
   return (
     <div className="App">
       <Header />
+        <Routes>
+          {/* <Route element={<PrivateRoute/>}>
+            <Route path={'/Home'} element={<Home/>}/>
+          </Route> */}
+          {/* <Route path={'/'} element={<Welcome/>}/> */}
+          <Route path={'/'} element={<SignUp/>}/>
+          <Route path={'/signup'} element={<SignUp/>}/>
+          {/* <Route path={'/login'} element={<Login/>}/> */}
+        </Routes>
       <Footer />
     </div>
   );
