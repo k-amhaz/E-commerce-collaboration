@@ -15,27 +15,24 @@
     }
   }
 
-<<<<<<< HEAD
   .down-header {
     background-color: white;
   }
-=======
-    .up-header {
-        background-color: #7E33E0;
-        .up-header-container {
-            color:  white;
-            height: 44px;
-            .right-menu {
-                div {
-                    cursor: pointer;
-                }
-            }
-            .bi-cart {
-                cursor: pointer;
-            }
+  .up-header {
+    background-color: #7e33e0;
+    .up-header-container {
+      color: white;
+      height: 44px;
+      .right-menu {
+        div {
+          cursor: pointer;
         }
+      }
+      .bi-cart {
+        cursor: pointer;
+      }
     }
->>>>>>> b60909cbfbba6b338367c67311b3da30ce218a64
+  }
 
   .bi-cart {
     font-size: 18px;
