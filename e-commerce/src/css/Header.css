@@ -12,14 +12,21 @@
   color: white;
   height: 44px;
 }
+.header .down-header {
+  background-color: white;
+}
+.header .up-header {
+  background-color: #7e33e0;
+}
+.header .up-header .up-header-container {
+  color: white;
+  height: 44px;
+}
 .header .up-header .up-header-container .right-menu div {
   cursor: pointer;
 }
 .header .up-header .up-header-container .bi-cart {
   cursor: pointer;
-}
-.header .down-header {
-  background-color: white;
 }
 .header .bi-cart {
   font-size: 18px;

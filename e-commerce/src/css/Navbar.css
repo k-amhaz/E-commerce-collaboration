@@ -1,5 +1,8 @@
+.navbar .ck {
+  padding-left: 10%;
+}
 .navbar a {
-  color: #0D0E43 !important;
+  color: #0d0e43 !important;
   font-family: Lato;
   font-size: 16px;
   font-weight: 400;
@@ -8,15 +11,15 @@
   text-align: left;
 }
 .navbar li.active {
-  color: #FB2E86 !important;
+  color: #fb2e86 !important;
 }
 .navbar .navbar-brand {
   font-size: 25px;
   font-weight: bold;
 }
 .navbar li a:hover {
-  color: #FB2E86 !important;
+  color: #fb2e86 !important;
 }
 .navbar li a.active {
-  color: #FB2E86 !important;
+  color: #fb2e86 !important;
 }/*# sourceMappingURL=Navbar.css.map */
