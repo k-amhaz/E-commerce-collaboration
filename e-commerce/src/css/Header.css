@@ -12,6 +12,12 @@
   color: white;
   height: 44px;
 }
+.header .up-header .up-header-container .right-menu div {
+  cursor: pointer;
+}
+.header .up-header .up-header-container .bi-cart {
+  cursor: pointer;
+}
 .header .down-header {
   background-color: white;
 }
