@@ -31,8 +31,7 @@ const SignUp = () => {
     function handleSignUpSubmit(e) {
         e.preventDefault()
         const {email, password} = currentUser.email
-
-
+                
         createUserWithEmailAndPassword(auth, email, password)
             // .then(() => navigate('/Home'))
             .catch((err) => setError(err))
