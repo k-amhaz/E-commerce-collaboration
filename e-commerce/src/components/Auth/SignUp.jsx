@@ -1,88 +1,109 @@
-import { createUserWithEmailAndPassword } from "firebase/auth"
-import { useContext, useState } from "react"
-import {  Link, useNavigate } from "react-router-dom"
-import {Typography, Button,TextField, Container} from "@mui/material";
-import {auth} from "../../data/DataBase"
+import React, { useState } from "react";
+import "../../css/SignIn.css";
+import SubHeader from "../SubHeader";
+import { Card } from "@mui/material";
+import { TextField } from "@mui/material";
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
+import { styled } from "@mui/system";
+import { auth, provider } from "../../data/DataBase";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
-// import Loading from "../Loading";
+const CssTextField = styled(TextField, {
+  shouldForwardProp: (props) => props !== "focusColor",
+})((p) => ({
+  // input label when focused
+  "& label.Mui-focused": {
+    color: p.focusColor,
+  },
+  // focused color for input with variant='standard'
+  "& .MuiInput-underline:after": {
+    borderBottomColor: p.focusColor,
+  },
+  // focused color for input with variant='filled'
+  "& .MuiFilledInput-underline:after": {
+    borderBottomColor: p.focusColor,
+  },
+  // focused color for input with variant='outlined'
+  "& .MuiOutlinedInput-root": {
+    "&.Mui-focused fieldset": {
+      borderColor: p.focusColor,
+    },
+  },
+}));
+export default function SignIn() {
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
 
-const SignUp = () => {
-    const [currentUser, setCurrentUser] = useState({
-        email: "",
-        password: ""
-    })
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setUserData((prevUserData) => {
+      return {
+        ...prevUserData,
+        [name]: [value],
+      };
+    });
+  }
 
-    const [error, setError] = useState('')
-    // const [signUpLoading, setSignUpLoading] = useState(false)
-    const navigate = useNavigate()
+  function handleSubmit(e) {
+    e.preventDefault();
 
-    function handleInputsSignupChange(e) {
-        const {name, value} = e.target
-        setCurrentUser(prevUser => {
-            return {
-                ...prevUser,
-                [name]: value
-            }
-        })
-    }
+    const { email, password } = userData;
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        console.log(done);
+      })
+      .catch((err) => console.log(err.message));
+  }
 
-    function handleSignUpSubmit(e) {
-        e.preventDefault()
-        const {email, password} = currentUser.email
-                
-        createUserWithEmailAndPassword(auth, email, password)
-            // .then(() => navigate('/Home'))
-            .catch((err) => setError(err))
-    }
+  return (
+    <>
+      <SubHeader loc={"Account"} path="Sign up" />
+      <div className="login-container">
+        <Card className="login-card">
+          <h4>Sign up</h4>
+          <p>Create an account using account detail bellow</p>
+          <form className="login-form" onSubmit={handleSubmit}>
+            <CssTextField
+              focusColor="#fb2e86"
+              name="email"
+              label="Email"
+              variant="outlined"
+              onChange={handleChange}
+              value={userData.email}
+              required
+              fullWidth
+              type={"email"}
+              className={"margin-field text-field"}
+            />
+            <CssTextField
+              focusColor="#fb2e86"
+              name="password"
+              label="Password"
+              variant="outlined"
+              onChange={handleChange}
+              value={userData.password}
+              required
+              fullWidth
+              type={"password"}
+              className="text-field"
+            />
+            <p className="forgot">Forgot you password?</p>
+            <Button className="login-button" variant="contained" type="submit">
+              Sign up
+            </Button>
+          </form>
 
-    return ( 
-        <>
-            {/* {signUpLoading && <Loading />} */}
-            {error && <p className=" text-center">{error.toString()}</p>}
-            <div className="signup d-flex justify-content-center align-items-center">
-                <div className="signup-card card text-center px-5 py-4">
-                    <div className="title d-flex justify-content-center align-items-center gap-3">
-                        <h2 className="mt-2" >Signup</h2>
-                    </div>
-                    <Typography  className="mt-3 lh-sm" variant="span">
-                        Please login using account detail bellow.
-                    </Typography>
-                    <form action="" className="mt-4 signup gap-4 d-flex justify-content-center align-items-center flex-column" onSubmit={(event) => handleSignUpSubmit(event)}>
-                        <TextField 
-                            className="w-100"
-                            label="email"
-                            type='email'
-                            color="primary" 
-                            value={currentUser.email.value}
-                            name="email"
-                            onChange={(event) => handleInputsSignupChange(event)} 
-                            placeholder="Enter Your Email Here"
-                            required
-                            focused 
-                        />
-                        <TextField 
-                            className="w-100"
-                            label="password"
-                            type='password'
-                            color="primary" 
-                            value={currentUser.password.value}
-                            name="password"
-                            onChange={(event) => handleInputsSignupChange(event)} 
-                            placeholder="Enter Your Password Here"
-                            required
-                            focused 
-                        />
-                        <Button 
-                            variant="contained"
-                            type="submit"
-                            className="w-100 mt-2"
-                        >Sign Up</Button>
-                    </form>
-                    <Typography color='primary' className="mt-4">Have an account? <Link to="/login">Login</Link></Typography>
-                </div>
-            </div>
-        </>
-     );
+          <p className="to-signup">
+            Have an account?{" "}
+            <Link to={"/login"} className="to-signup">
+              Login
+            </Link>
+          </p>
+        </Card>
+      </div>
+    </>
+  );
 }
- 
-export default SignUp;
