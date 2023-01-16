@@ -7,7 +7,7 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/system";
 import { auth, provider } from "../../data/DataBase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const CssTextField = styled(TextField, {
   shouldForwardProp: (props) => props !== "focusColor",
@@ -49,30 +49,18 @@ export default function SignIn() {
     });
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
 
-<<<<<<< HEAD
     const { email, password, confirm } = userData;
     if (password === confirm) {
     } else {
       setError("Passwords do not match");
     }
   }
-<<<<<<< HEAD
   function AliIsgay() {
     console.log("ali is gay");
   }
-=======
-=======
-  function handleSubmit(e) {
-    e.preventDefault()
-    const {email, password} = userData
-
-
-    createUserWithEmailAndPassword(auth, email, password)
-  }   
->>>>>>> e227bd3 (sign up page has been updatated)
-
->>>>>>> 15cf9cc618a58ba184504f5ecedab6d29a97c425
   return (
     <>
       <SubHeader loc={"Account"} path="Sign up" />
