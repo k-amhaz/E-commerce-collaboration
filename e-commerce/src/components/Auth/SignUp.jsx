@@ -3,6 +3,7 @@ import { useContext, useState } from "react"
 import {  Link, useNavigate } from "react-router-dom"
 import {Typography, Button,TextField, Container} from "@mui/material";
 import {auth} from "../../data/DataBase"
+
 // import Loading from "../Loading";
 
 const SignUp = () => {
@@ -41,10 +42,10 @@ const SignUp = () => {
             <div className="signup d-flex justify-content-center align-items-center">
                 <div className="signup-card card text-center px-5 py-4">
                     <div className="title d-flex justify-content-center align-items-center gap-3">
-                        <h2 className="mt-2" >KO-gram</h2>
+                        <h2 className="mt-2" >Signup</h2>
                     </div>
-                    <Typography  className="to-see-photos mt-3 lh-sm" variant="span">
-                        Sign up to see photos and videos from your friends
+                    <Typography  className="mt-3 lh-sm" variant="span">
+                        Please login using account detail bellow.
                     </Typography>
                     <form action="" className="mt-4 signup gap-4 d-flex justify-content-center align-items-center flex-column" onSubmit={(event) => handleSignUpSubmit(event)}>
                         <TextField 
