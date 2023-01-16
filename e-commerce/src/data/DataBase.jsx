@@ -1,5 +1,8 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import {
+    getAuth,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDuTL5ZJJf4PaJIkmCaT3Mwrr4UENsIl3k",
@@ -15,6 +18,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 export { auth };
+
 
 // api.ts:146 Uncaught FirebaseError: Firebase: Need to provide options, when not being deployed to hosting via source. (app/no-options).
 //     at initializeApp (api.ts:146:25)

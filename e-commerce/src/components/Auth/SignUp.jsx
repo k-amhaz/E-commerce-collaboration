@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { styled } from "@mui/system";
 import { auth } from "../../data/DataBase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
 const CssTextField = styled(TextField, {
   shouldForwardProp: (props) => props !== "focusColor",
@@ -40,27 +41,29 @@ export default function SignIn() {
   });
 
   function handleChange(e) {
-    const { name, value } = e.target;
+    const { id, value } = e.target;
     setUserData((prevUserData) => {
       return {
         ...prevUserData,
-        [name]: [value],
+        [id]: [value],
       };
     });
   }
 
+  
   function handleSubmit(e) {
     e.preventDefault();
 
-    const { email, password, confirm } = userData;
-    if (password === confirm) {
-    } else {
-      setError("Passwords do not match");
-    }
+
+    // if (userData.password !== userData.confirm) {
+    //   return setError("Passwords do not match")
+    // }
+    // else {
+    createUserWithEmailAndPassword(auth, userData.email.value, userData.password.value)
+      .then(cred => console.log(cred.user))
+      .catch(err => console.log(err.message))
   }
-  function AliIsgay() {
-    console.log("ali is gay");
-  }
+
   return (
     <>
       <SubHeader loc={"Account"} path="Sign up" />
@@ -68,15 +71,16 @@ export default function SignIn() {
         <Card className="login-card">
           <h4>Sign up</h4>
           <p>Create an account using account detail bellow</p>
-          <h3 className="error"> {error && error}</h3>
-          <form className="login-form" onSubmit={handleSubmit}>
+          {error && <h3 className="error">{error}</h3>}
+          <form className="login-form" onSubmit={(e) => handleSubmit(e)}>
             <CssTextField
               focusColor="#fb2e86"
-              name="email"
+              id="email"
               label="Email"
               variant="outlined"
-              onChange={handleChange}
-              value={userData.email}
+              value={userData.email.value}
+              onChange={(e) => handleChange(e)}
+
               required
               fullWidth
               type={"email"}
@@ -84,11 +88,12 @@ export default function SignIn() {
             />
             <CssTextField
               focusColor="#fb2e86"
-              name="password"
+              id="password"
               label="Password"
               variant="outlined"
-              onChange={handleChange}
-              value={userData.password}
+              value={userData.password.value}
+              onChange={(e) => handleChange(e)}
+
               required
               fullWidth
               type={"password"}
@@ -96,11 +101,12 @@ export default function SignIn() {
             />
             <CssTextField
               focusColor="#fb2e86"
-              name="confirm"
+              id="confirm"
               label="Confirm Password"
               variant="outlined"
-              onChange={handleChange}
-              value={userData.confirm}
+              value={userData.confirm.value}
+              onChange={(e) => handleChange(e)}
+
               required
               fullWidth
               type={"password"}
