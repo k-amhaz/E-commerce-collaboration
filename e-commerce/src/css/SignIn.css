@@ -11,6 +11,12 @@
   padding: 50px 55px;
   text-align: center;
 }
+.login-container .login-card h3.error {
+  color: red;
+  padding: 20px;
+  border: red 2px solid;
+  margin-bottom: 25px;
+}
 .login-container .login-card h4 {
   font-family: "Josefin Sans";
   font-size: 32px;

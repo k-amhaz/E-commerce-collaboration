@@ -32,9 +32,11 @@ const CssTextField = styled(TextField, {
   },
 }));
 export default function SignIn() {
+  const [error, setError] = useState("");
   const [userData, setUserData] = useState({
     email: "",
     password: "",
+    confirm: "",
   });
 
   function handleChange(e) {
@@ -50,12 +52,11 @@ export default function SignIn() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    const { email, password } = userData;
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        console.log(done);
-      })
-      .catch((err) => console.log(err.message));
+    const { email, password, confirm } = userData;
+    if (password === confirm) {
+    } else {
+      setError("Passwords do not match");
+    }
   }
 
   return (
@@ -65,6 +66,7 @@ export default function SignIn() {
         <Card className="login-card">
           <h4>Sign up</h4>
           <p>Create an account using account detail bellow</p>
+          <h3 className="error"> {error && error}</h3>
           <form className="login-form" onSubmit={handleSubmit}>
             <CssTextField
               focusColor="#fb2e86"
@@ -85,6 +87,18 @@ export default function SignIn() {
               variant="outlined"
               onChange={handleChange}
               value={userData.password}
+              required
+              fullWidth
+              type={"password"}
+              className="text-field margin-field"
+            />
+            <CssTextField
+              focusColor="#fb2e86"
+              name="confirm"
+              label="Confirm Password"
+              variant="outlined"
+              onChange={handleChange}
+              value={userData.confirm}
               required
               fullWidth
               type={"password"}
