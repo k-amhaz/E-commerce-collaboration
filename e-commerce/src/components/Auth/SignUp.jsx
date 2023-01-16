@@ -6,7 +6,7 @@ import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/system";
-import { auth, provider } from "../../data/DataBase";
+import { auth } from "../../data/DataBase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 
 const CssTextField = styled(TextField, {
