@@ -4,8 +4,8 @@ import Footer from "./components/Footer";
 import SignUp from "./components/Auth/SignUp";
 import SignIn from "./components/Auth/SignIn";
 import SubHeader from "./components/SubHeader";
-// import Home from './Components/home/Home'
 import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
 // import PrivateRoute from './Components/auth/PrivateRoute'
 
 function App() {
@@ -14,9 +14,9 @@ function App() {
       <Header />
       <Routes>
         {/* <Route element={<PrivateRoute/>}>
-            <Route path={'/Home'} element={<Home/>}/>
-          </Route> */}
-        {/* <Route path={'/'} element={<Welcome/>}/> */}
+          <Route path={'/Home'} element={<Home/>}/>
+        </Route> */}
+        <Route exact path={'/'} element={<Home/>}/>
         <Route path={"/signup"} element={<SignUp />} />
         <Route path={"/login"} element={<SignIn />} />
       </Routes>
