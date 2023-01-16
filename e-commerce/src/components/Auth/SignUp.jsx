@@ -58,7 +58,9 @@ export default function SignIn() {
       setError("Passwords do not match");
     }
   }
-
+  function AliIsgay() {
+    console.log("ali is gay");
+  }
   return (
     <>
       <SubHeader loc={"Account"} path="Sign up" />
