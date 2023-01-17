@@ -1,30 +1,20 @@
 import { createContext, useState } from "react";
 import { useEffect } from "react";
-const Context = createContext()
-const {Provider, Consumer} = Context;
+const Context = createContext();
+const { Provider } = Context;
 
 const ContextProvider = (props) => {
+  const [data, setData] = useState([]);
 
-    const [data, setData] = useState([])
-
-
-    for (let i = 0; i < img.length; i++) {
-        img .push()
-    }
-
+  function getProducts(path = "products") {
     useEffect(() => {
-        fetch('https://fakestoreapi.com/products')
-            .then(res =>res.json())
-            .then(data => setData(data))
-    }, [])
+      fetch(`https://fakestoreapi.com/${path}`)
+        .then((res) => res.json())
+        .then((data) => setData(data));
+    }, []);
+  }
 
-    return (
-        <Provider value={data}>
+  return <Provider value={{ data, getProducts }}>{props.children}</Provider>;
+};
 
-        <Provider value={{data}}>
-            {props.children}
-        </Provider>
-    )
-    };
- 
-export {ContextProvider, Context};
+export { ContextProvider, Context };
