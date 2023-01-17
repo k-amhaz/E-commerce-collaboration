@@ -10,7 +10,8 @@ const ContextProvider = (props) => {
     useEffect(() => {
       fetch(`https://fakestoreapi.com/${path}`)
         .then((res) => res.json())
-        .then((data) => setData(data));
+        .then((data) => setData(data))
+
     }, []);
   }
 

@@ -17,8 +17,8 @@ const Cards = () => {
                 </div>
             </div>   
         )
-    })
-
+    })  
+    
     return ( 
         <div className="cards">
             {cards}
