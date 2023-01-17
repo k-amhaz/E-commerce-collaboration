@@ -1,3 +1,8 @@
+:root {
+  --pink-color: #FB2E86;
+  --sub-text-color: #8A8FB9;
+}
+
 .navbar .ck {
   padding-left: 10%;
 }
@@ -22,4 +27,28 @@
 }
 .navbar li a.active {
   color: #fb2e86 !important;
+}
+
+.input-group {
+  position: relative;
+}
+.input-group::after {
+  content: "";
+  position: absolute;
+  width: 35px;
+  height: 95%;
+  background-color: var(--pink-color);
+  bottom: -7px;
+  right: 0;
+}
+.input-group .form-control {
+  transform: translateY(8px);
+  border-radius: 0px !important;
+}
+.input-group .bi-search {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  z-index: 200;
+  color: white;
 }/*# sourceMappingURL=Navbar.css.map */

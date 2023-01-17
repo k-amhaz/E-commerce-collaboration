@@ -10,12 +10,12 @@
 .home .subheader {
   background: #F2F0FF;
   width: 100%;
-  height: 500px;
+  min-height: 500px;
 }
 .home .subheader .left {
   width: 600px;
 }
-.home .subheader .left p:first-child {
+.home .subheader .left p:first-of-type {
   color: var(--pink-color);
 }
 .home .subheader .left p:last-of-type {
