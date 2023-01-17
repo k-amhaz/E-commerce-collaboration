@@ -6,7 +6,7 @@ import SignUp from "./components/Auth/SignUp";
 import SignIn from "./components/Auth/SignIn";
 import SubHeader from "./components/SubHeader";
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
+import Home from "./components/home/Home";
 // import PrivateRoute from './Components/auth/PrivateRoute'
 
 function App() {
