@@ -6,21 +6,18 @@ const {Provider, Consumer} = Context;
 const ContextProvider = (props) => {
 
     const [data, setData] = useState([])
-    for (let i = 0; i < img.length; i++) {
-        imgs.push()
-    }
 
     useEffect(() => {
-        fetch('https://fakestoreapi.com/products/categories')
+        fetch('https://fakestoreapi.com/products')
             .then(res =>res.json())
             .then(data => setData(data))
     }, [])
 
     return (
-        <Provider value={''}>
+        <Provider value={{data}}>
             {props.children}
         </Provider>
     );
 }
  
-export {ContextProvider, Consumer};
+export {ContextProvider, Context};
