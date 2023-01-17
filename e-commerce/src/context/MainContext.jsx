@@ -6,8 +6,10 @@ const {Provider, Consumer} = Context;
 const ContextProvider = (props) => {
 
     const [data, setData] = useState([])
+
+
     for (let i = 0; i < img.length; i++) {
-        imgs.push()
+        img .push()
     }
 
     useEffect(() => {
@@ -17,7 +19,7 @@ const ContextProvider = (props) => {
     }, [])
 
     return (
-        <Provider value={''}>
+        <Provider value={data}>
             {props.children}
         </Provider>
     );
