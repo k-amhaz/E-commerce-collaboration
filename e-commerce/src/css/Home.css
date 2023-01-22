@@ -1,7 +1,13 @@
 :root {
   --pink-color: #FB2E86;
   --sub-text-color: #8A8FB9;
-  --third-color: #151875;
+  --third-color: #696ba0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
 }
 
 .home {
@@ -88,11 +94,12 @@
 .home .featured-card {
   height: 320px;
   border: 0px !important;
-}
-.home .featured-card .card-img {
-  background: #F6F7FB;
+  margin-top: 20px;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
 }
 .home .featured-card .card-img img {
+  transform: translateY(40px);
   width: 100px;
   height: 100px;
 }
@@ -101,9 +108,25 @@
 }
 .home .featured-card .card-body p {
   color: #151875;
+  margin-top: 20px;
 }
 .home .featured-card .card-body .product-title {
-  height: 120px;
+  width: 200px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.home .featured-card .card-body .product-price {
+  font-size: 22px;
+}
+.home .featured-card .add-to-cart-btn {
+  background-color: var(--pink-color);
+  color: white;
+  width: 100%;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .home .offer_card i {
   font-size: 32px;
@@ -118,19 +141,11 @@
 }
 .home .unique-feature {
   background: #F1F0FF;
+  position: relative;
 }
 .home .unique-feature .unique-img {
-  position: relative;
-  width: 200px;
-}
-.home .unique-feature .unique-img::after {
-  content: "";
-  background: rgba(236, 210, 250, 0.3490196078);
-  position: absolute;
-  border-radius: 52% 48% 49% 51%/51% 57% 43% 49%;
-  width: 400px;
-  height: 400px;
-  z-index: 100 !important;
+  width: 300px !important;
+  border-radius: 30px !important;
 }
 .home .unique-feature ul li {
   color: var(--sub-text-color);
@@ -159,7 +174,7 @@
   color: white;
   border-radius: 0px !important;
   width: 150px;
-  height: 100px;
+  padding: 10px;
 }
 .home .discount-item h5 {
   color: var(--pink-color);
@@ -173,7 +188,11 @@
   border-radius: 0px !important;
   width: 150px;
 }
+.home .discount-item img {
+  width: 250px !important;
+}
 .home .latest-update {
+  overflow: hidden;
   height: 450px;
   position: relative;
 }

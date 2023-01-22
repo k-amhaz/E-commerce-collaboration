@@ -5,17 +5,17 @@ const { Provider } = Context;
 
 const ContextProvider = (props) => {
   const [data, setData] = useState([]);
+  const [uniqueImg, setUniqueImg] = useState([])
 
-  function getProducts(path = "products") {
-    useEffect(() => {
-      fetch(`https://fakestoreapi.com/${path}`)
-        .then((res) => res.json())
-        .then((data) => setData(data))
+  useEffect(() => {
+    fetch(`https://fakestoreapi.com/products`)
+      .then((res) => res.json())
+      .then((data) => setData(data))
+  }, []);
 
-    }, []);
-  }
-
-  return <Provider value={{ data, getProducts }}>{props.children}</Provider>;
+  return (
+    <Provider value={{ data }}>{props.children}</Provider>
+  );
 };
 
 export { ContextProvider, Context };
