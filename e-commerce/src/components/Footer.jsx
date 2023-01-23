@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <>
       <div className="footer">
-        <Container className="footer-links">
+        <div className="footer-links container-lg">
           <div className="footer-info">
             <h3 className="footer-title">Hekto</h3>
             <div className="footer-phone-number footer-contact">
@@ -40,7 +40,7 @@ export default function Footer() {
             <p>Sign up</p>
             <p>Log in</p>
           </div>
-        </Container>
+        </div>
         <footer>
           <div className="footer-bottom-container">
             <p>

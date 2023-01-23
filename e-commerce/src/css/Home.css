@@ -2,7 +2,7 @@
   --pink-color: #FB2E86;
   --sub-text-color: #8A8FB9;
   --third-color: #696ba0;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
 }
 
 body {
@@ -10,7 +10,67 @@ body {
   padding: 0;
 }
 
+.featured-card {
+  height: 320px;
+  border: 0px !important;
+  margin-top: 20px;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  transition: 0.5s;
+}
+.featured-card .card-img {
+  position: relative;
+}
+.featured-card .card-img ul {
+  position: absolute;
+  left: 15px;
+  top: 40px;
+}
+.featured-card .card-img ul li {
+  margin-top: 5px;
+  font-size: 20px;
+  color: var(--third-color);
+  cursor: pointer;
+}
+.featured-card .card-img ul li:first-of-type {
+  transform: translateY(-1px);
+}
+.featured-card .card-img ul li:hover {
+  color: var(--pink-color);
+}
+.featured-card .card-img img {
+  transform: translateY(40px);
+  width: 100px;
+  height: 100px;
+}
+.featured-card .card-body h5 {
+  color: var(--pink-color);
+}
+.featured-card .card-body p {
+  color: #151875;
+  margin-top: 20px;
+}
+.featured-card .card-body .product-title {
+  width: 200px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.featured-card .card-body .product-price {
+  font-size: 22px;
+}
+.featured-card .add-to-cart-btn {
+  background-color: var(--pink-color);
+  color: white;
+  width: 100%;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 .home {
+  overflow: hidden;
   width: 100%;
   position: relative;
 }
@@ -90,43 +150,6 @@ body {
   left: -5px;
   width: 100px;
   top: 0px;
-}
-.home .featured-card {
-  height: 320px;
-  border: 0px !important;
-  margin-top: 20px;
-  border-bottom-left-radius: 0px !important;
-  border-bottom-right-radius: 0px !important;
-}
-.home .featured-card .card-img img {
-  transform: translateY(40px);
-  width: 100px;
-  height: 100px;
-}
-.home .featured-card .card-body h5 {
-  color: var(--pink-color);
-}
-.home .featured-card .card-body p {
-  color: #151875;
-  margin-top: 20px;
-}
-.home .featured-card .card-body .product-title {
-  width: 200px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-.home .featured-card .card-body .product-price {
-  font-size: 22px;
-}
-.home .featured-card .add-to-cart-btn {
-  background-color: var(--pink-color);
-  color: white;
-  width: 100%;
-  border-top-right-radius: 0px;
-  border-top-left-radius: 0px;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 .home .offer_card i {
   font-size: 32px;

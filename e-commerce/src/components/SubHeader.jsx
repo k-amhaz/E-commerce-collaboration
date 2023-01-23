@@ -6,7 +6,7 @@ export default function SubHeader({ loc, path }) {
   return (
     <div className="background ">
       <div className="container-lg sub-container">
-        <h1>{loc}</h1>
+        <h1>{path}</h1>
         <h5>
           {loc} - <span>{path}</span>
         </h5>

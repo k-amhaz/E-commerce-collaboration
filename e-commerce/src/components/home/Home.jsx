@@ -3,84 +3,17 @@ import React from 'react'
 import canape_img from "../../assets/Shell-Shaped-Armchair-Pink-Velvet-Fabric-One-Seater-Sofa-for-Living-Room 1.png"
 import lamp_img from "../../assets/image 32.png"
 import reactangle_img from "../../assets/eRwDMy.webp"
+import ads_img from "../../assets/image 1174.png"
 import { Typography, Rating, Stack } from '@mui/material'
 import { Context } from '../../context/MainContext';
 import { useContext, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
 
-    const {data} = useContext(Context)
-    console.log(data.length)
-    const [hovered, setHovered] = useState(false)
+    const {data, getProducts} = useContext(Context)
 
-    const HalfRating = (product) => {
-        return (
-            <Stack spacing={1}>
-                {/* <Rating name="half-rating" defaultValue={2.5} precision={0.5} /> */}
-                <Rating className="half-rating-read mb-4" defaultValue={product.rating.rate} precision={0.5} readOnly />
-            </Stack>
-        );
-    }
-
-    const getRandomProducts = (numberOfItems, arrayOfItems, rate) => {
-        for (let index = 0; index < numberOfItems; index++) {
-            const random = Math.floor(Math.random() * data.length)
-            arrayOfItems.push(cards[random])
-        }
-        return arrayOfItems
-    }
-
-    const cards = data.map((product) => {
-        return (
-            <div 
-                className="card shadow featured-card text-start d-flex justify-content-center align-items-center flex-column" 
-                id={product.id} 
-                key={product.id}
-                // onMouseEnter={() => setHovered(true)}
-                // onMouseLeave={() => setHovered(false)}
-            >
-                <div className="card-img d-flex justify-content-center align-items-center">
-                    <img src={product.image} className="card-img-top my-4 " alt="..."/>
-                </div>
-                <div className="card-body">
-                    <h5 className=" product-title">{product.title}</h5>
-                    <p className=" product-price text-center mt-2 ">$   {product.price}</p>
-                    <p>{product.rating.rate}</p>
-                </div>
-            </div> 
-        )
-    })
-
-    
-    const topRatingProducts = data.filter((product) => {
-        return product.rating.rate >= 4.7
-    })
-
-    
-
-    const featured_cards = topRatingProducts.map((product) => {
-        return (
-            <div 
-                className="card mt-5 shadow-lg featured-card text-start d-flex justify-content-center align-items-center flex-column" 
-                id={product.id} 
-                key={product.id}
-                onMouseEnter={() => setHovered(true)}
-                onMouseLeave={() => setHovered(false)}
-            >
-                <div className="card-img d-flex justify-content-center align-items-center">
-                    <img src={product.image} className="card-img-top my-4 " alt="..."/>
-                </div>
-                <div className="card-body text-center mt-4">
-                    <p className=" product-title">{product.title}</p>
-                    <h5 className=" product-price text-center fw-bold mb-0">$ {product.price}</h5>
-                </div>
-                {HalfRating(product)}
-                <div className="btn add-to-cart-btn ">
-                    Add To Cart
-                </div>
-            </div> 
-        )
-    })
+    getProducts();
 
     const offer_card = (icon) => {
         return (
@@ -91,6 +24,62 @@ const Home = () => {
             </div>
         )
     }
+
+    const shopNowBtn = () => {
+        return (
+            <Link to='/shop'>
+                <div className="btn mt-4">
+                    Shop Now
+                </div>
+            </Link>
+        )
+    }
+
+    const topRatingProducts = data.filter((product) => {
+        return product.rating.rate >= 4.7
+    })    
+
+    const HalfRating = (product) => {
+        return (
+            <Stack spacing={1}>
+                {/* <Rating name="half-rating" defaultValue={2.5} precision={0.5} /> */}
+                <Rating className="half-rating-read mb-4" defaultValue={product.rating.rate} precision={0.5} readOnly />
+            </Stack>
+        );
+    }
+
+    const cardItem = (product) => {
+        const [isShown, setIsShown] = useState(false)
+        return (
+            <div 
+                className="card mt-5 shadow-lg featured-card text-start d-flex justify-content-center align-items-center flex-column" 
+                id={product.id} 
+                key={product.id}
+                onMouseEnter={() => setIsShown(true)}
+                onMouseLeave={() =>setIsShown(false)}
+            >
+                <div className="card-img d-flex justify-content-center align-items-center p-relative">
+                    {isShown && <ul className='list-unstyled d-flex justify-content-center align-items-center gap-3'>
+                        <li><i className="bi bi-cart"></i></li>
+                        <li><i className="bi bi-heart"></i></li>
+                    </ul>}
+                    <img src={product.image} className="card-img-top my-4 " alt="..."/>
+                </div>
+                <div className="card-body text-center mt-4">
+                    <p className=" product-title">{product.title}</p>
+                    <h5 className=" product-price text-center fw-bold mb-0">$ {product.price}</h5>
+                </div>
+                {HalfRating(product)}
+                <div className="btn add-to-cart-btn ">
+                    View Details
+                </div>
+            </div> 
+        )
+    }
+
+    const featured_cards = topRatingProducts.map((product) => {
+        return cardItem(product)
+    })
 
     return ( 
         <div className="home">
@@ -114,8 +103,7 @@ const Home = () => {
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing
                             in phasellus non in justo.
                         </Typography>
-                        <div className="btn py-2">Shop Now</div>
-
+                        {shopNowBtn()}
                     </div>
                     <div className="right d-none d-lg-block">
                         <div className="discount  d-flex justify-content-center align-items-center ">
@@ -217,9 +205,7 @@ const Home = () => {
                                         <p><i class="bi bi-check-lg"></i> Material expose like metals</p>
                                     </div>
                                 </div>
-                                <div className="btn mt-3">
-                                    Shop Now
-                                </div>
+                                {shopNowBtn()}
                             </div>
                         </div>
                         <div className="col-6 d-flex justify-content-center">
@@ -232,7 +218,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
             <div className="latest-update text-center">
                 <div className="background-img">
                     <img src={reactangle_img} alt="" />
@@ -242,11 +227,12 @@ const Home = () => {
                         <div className="styled-h2 ">
                         Get Leatest Update By Subscribe 0ur Newslater
                         </div>
-                        <div className="btn mt-4">
-                            Shop Now
-                        </div>
+                        {shopNowBtn()}
                     </div>
                 </div>
+            </div>
+            <div className="ads container-lg d-flex justify-content-center align-items-center pt-4 pb-4 ">
+                <img src={ads_img} alt="" className='w-75 w-lg-100'/>
             </div>
         </div>
      );

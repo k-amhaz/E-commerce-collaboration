@@ -1,6 +1,16 @@
 import "../../css/Navbar.css";
+import { useContext } from "react";
+import { Context } from "../../context/MainContext";
+
 
 const Navbar = () => {
+
+  const {getActiveItem} = useContext(Context)
+  
+  const lis = document.querySelectorAll(".navbar ul li a");  
+
+  getActiveItem(lis)
+
   return (
     <div className="down-header ">
       <nav className="navbar navbar-expand-md ">
@@ -48,15 +58,5 @@ const Navbar = () => {
     </div>
   );
 };
-
-const lis = document.querySelectorAll(".navbar ul li a");
-lis.forEach((li) => {
-  li.addEventListener("click", (e) => {
-    lis.forEach((li) => {
-      li.classList.remove("active");
-    });
-    e.currentTarget.classList.add("active");
-  });
-});
 
 export default Navbar;

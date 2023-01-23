@@ -4,17 +4,33 @@ const Context = createContext();
 const { Provider } = Context;
 
 const ContextProvider = (props) => {
-  const [data, setData] = useState([]);
-  const [uniqueImg, setUniqueImg] = useState([])
 
-  useEffect(() => {
-    fetch(`https://fakestoreapi.com/products`)
-      .then((res) => res.json())
-      .then((data) => setData(data))
-  }, []);
+  const [data, setData] = useState([]);
+
+  function getProducts(path = 'products') {
+    useEffect(() => {
+      fetch(`https://fakestoreapi.com/${path}`)
+      
+        .then((res) => res.json())
+        .then((data) => setData(data))
+    }, []);
+  }
+
+  function getActiveItem(itemsArray) {
+    itemsArray.forEach((child) => {
+      child.addEventListener( "click" , (e) => {
+        itemsArray.forEach((child) => {
+          child.classList.remove("active");
+        });
+        e.currentTarget.classList.add("active");
+      });
+    });
+  }
 
   return (
-    <Provider value={{ data }}>{props.children}</Provider>
+    <Provider value={{ data, getActiveItem, getProducts}}>
+      {props.children}
+    </Provider>
   );
 };
 

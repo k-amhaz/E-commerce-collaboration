@@ -2,15 +2,75 @@
     --pink-color: #FB2E86;
     --sub-text-color: #8A8FB9;
     --third-color: #696ba0;
-    box-sizing: border-box;
+    box-sizing: border-box !important;
 }
 body {
     margin: 0;
     padding: 0;
+    
+}
+
+.featured-card {
+    height: 320px;
+    border: 0px !important;
+    margin-top: 20px;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    transition: .5s;
+
+    .card-img {
+        position: relative;
+
+        ul {
+
+            position: absolute;
+            left: 15px;
+            top: 40px;
+            li {
+                &:first-of-type {
+                    transform: translateY(-1px);
+                }
+
+                margin-top: 5px;
+                font-size: 20px;
+                color: var(--third-color);
+                cursor: pointer;
+                &:hover {
+                    color: var(--pink-color);
+                }
+            }
+        }
+        img {
+            transform: translateY(40px);
+            width: 100px;
+            height: 100px;
+        }
+    }
+
+    .card-body { 
+        h5 {color: var(--pink-color);}
+        p  {color: #151875; margin-top: 20px;}
+        .product-title {
+            width: 200px;
+            white-space:nowrap; 
+            text-overflow: ellipsis; 
+            overflow: hidden; 
+        }
+        .product-price{font-size: 22px;}
+    }
+    .add-to-cart-btn {
+        background-color: var(--pink-color);
+        color: white;
+        width: 100%;
+        border-top-right-radius: 0px;
+        border-top-left-radius: 0px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
 }
 
 .home {
-
+    overflow: hidden;
     width: 100%;
     position: relative;
 
@@ -96,42 +156,6 @@ body {
             top: 0px;
         }
 
-    }
-    .featured-card {
-        height: 320px;
-        border: 0px !important;
-        margin-top: 20px;
-        border-bottom-left-radius: 0px !important;
-        border-bottom-right-radius: 0px !important;
-
-        .card-img {
-            img {
-                transform: translateY(40px);
-                width: 100px;
-                height: 100px;
-            }
-        }
-
-        .card-body { 
-            h5 {color: var(--pink-color);}
-            p  {color: #151875; margin-top: 20px;}
-            .product-title {
-                width: 200px;
-                white-space:nowrap; 
-                text-overflow: ellipsis; 
-                overflow: hidden; 
-            }
-            .product-price{font-size: 22px;}
-        }
-        .add-to-cart-btn {
-            background-color: var(--pink-color);
-            color: white;
-            width: 100%;
-            border-top-right-radius: 0px;
-            border-top-left-radius: 0px;
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
     }
     .offer_card {
         i {
