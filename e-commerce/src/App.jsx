@@ -7,7 +7,7 @@ import SignIn from "./components/Auth/SignIn";
 import SubHeader from "./components/SubHeader";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/home/Home";
-import ShopGrid from "./components/Shop/ShopGrid";
+import ShopGrid from './components/Shop/ShopGrid';
 // import PrivateRoute from './Components/auth/PrivateRoute'
 
 function App() {

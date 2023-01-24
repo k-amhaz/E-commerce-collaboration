@@ -8,17 +8,13 @@ import { Typography, Rating, Stack } from '@mui/material'
 import { Grid } from "@mui/material";
 import {Box, InputLabel, MenuItem, FormControl, Select} from "@mui/material";
 
-export default function ShopGrid() {
+function ShopGrid() {
 
-  const { data, getProducts } = useContext(Context);
+  const { data, getProducts, category, handleCategoryChange } = useContext(Context);
+  const [price, setPrice] = useState('');
+  const [products, setProducts] = useState([])
 
-
-  const [category, setCategory] = useState('');
-  getProducts()
-
-
-  // category ? getProducts(category) : getProducts()
-
+  category ? getProducts(`products/category/${category}`) : getProducts();
 
   // const items = data.map((product) => {
   //   return (
@@ -33,55 +29,29 @@ export default function ShopGrid() {
   //     </Grid>
   //   );
   // });
-  console.log(data)
 
-  const HalfRating = (product) => {
+  const featured_cards = products.map((product) => {
     return (
-      <Stack spacing={1}>
-          {/* <Rating name="half-rating" defaultValue={2.5} precision={0.5} /> */}
-          <Rating className="half-rating-read mb-4" defaultValue={product.rating.rate} precision={0.5} readOnly />
-      </Stack>
-    );
+      <Item
+        id={product.id}
+        key={product.id}
+        product={product}
+        title={product.title}
+        price={product.price}
+        image={product.image}
+      />
+    )
+  })
+  console.log(featured_cards)
+
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value)
+    setProducts(data.filter((product) => {
+      if(product.price < price) {
+        return product
+      }
+    }))
   }
-
-  function cardItem (product) {
-      const [isShown, setIsShown] = useState(false)
-      return (
-          <div 
-              className="card  shadow-lg featured-card text-start d-flex justify-content-center align-items-center flex-column" 
-              id={product.id} 
-              onMouseEnter={() => setIsShown(true)}
-              key={product.id}
-              onMouseLeave={() =>setIsShown(false)}
-          >
-              <div className="card-img d-flex justify-content-center align-items-center p-relative">
-                  {isShown && <ul className='list-unstyled d-flex justify-content-center align-items-center gap-3'>
-                      <li><i className="bi bi-cart"></i></li>
-                      <li><i className="bi bi-heart"></i></li>
-                  </ul>}
-                  <img src={product.image} className="card-img-top my-4 " alt="..."/>
-              </div>
-              <div className="card-body text-center mt-4">
-                  <p className=" product-title">{product.title}</p>
-                  <h5 className=" product-price text-center fw-bold mb-0">$ {product.price}</h5>
-              </div>
-              {HalfRating(product)}
-              <div className="btn add-to-cart-btn ">
-                  View Details
-              </div>
-          </div> 
-      )
-  }
-
-    const featured_cards = data.map((product) => {
-      return cardItem(product)
-    })
-    console.log(featured_cards)
-
-    const handleChange = (event) => {
-      setCategory(event.target.value);
-      console.log(category)
-    };
 
   return (
     <div className="shopgrid">
@@ -89,23 +59,50 @@ export default function ShopGrid() {
         loc='Home . Pages'
         path='ShopList'
       />
-      <Box sx={{ minWidth: 120 }}>
-        <FormControl>
-          <InputLabel id="demo-simple-select-label">Category</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={category}
-            label="Category"
-            onChange={() => handleChange(event)}
-          >
-            <MenuItem value={'electronics'}>electronics</MenuItem>
-            <MenuItem value={'jewelery'}>jewelery</MenuItem>
-            <MenuItem value={'mens clothing'}>men\'s clothing</MenuItem>
-            <MenuItem value={'womens clothing'}>women's clothing</MenuItem>
-          </Select>
-        </FormControl>
-      </Box>
+      <div className="section-details">
+        <div className="container-lg d-flex justify-content-between align-items-end">
+          <div className="details">
+            <div className="styled-h2 mt-5 text-start">
+              Ecommerce Acceories & Fashion item 
+            </div>
+            <p className=''>Select A Specific Category</p>
+          </div>
+          <Box className='text-center box' >
+            <FormControl>
+              <InputLabel id="demo-simple-select-label" >Category</InputLabel >
+              <Select
+                className="category-field"
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={category}
+                label="Category"
+                onChange={handleCategoryChange}
+              >
+                <MenuItem value={'electronics'}>electronics</MenuItem>
+                <MenuItem value={'jewelery'}>jewelery</MenuItem>
+                <MenuItem value={"men's clothing"}>men's clothing</MenuItem>
+                <MenuItem value={"women's clothing"}>women's clothing</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl>
+            <InputLabel id="demo-simple-select-label" >Price</InputLabel >
+              <Select
+                className="category-field"
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={price}
+                label="Category"
+                onChange={handlePriceChange}
+              >
+                <MenuItem value={"20"}>$0.00 - $20.00</MenuItem>
+                <MenuItem value={"60"}>$20.00 - $60.00</MenuItem>
+                <MenuItem value={"80"}>$60.00 - $100.00</MenuItem>
+                <MenuItem value={"120"}>$100.00 - 120.00</MenuItem>
+              </Select> 
+            </FormControl>
+          </Box>
+        </div>
+      </div>
       <Container>
         <div className="centering-dev">
           {/* <Grid
@@ -129,3 +126,4 @@ export default function ShopGrid() {
   );
 }
 
+export default ShopGrid;

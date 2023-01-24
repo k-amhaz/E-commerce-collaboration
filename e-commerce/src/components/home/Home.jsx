@@ -4,14 +4,15 @@ import canape_img from "../../assets/Shell-Shaped-Armchair-Pink-Velvet-Fabric-On
 import lamp_img from "../../assets/image 32.png"
 import reactangle_img from "../../assets/eRwDMy.webp"
 import ads_img from "../../assets/image 1174.png"
+import Item from '../Shop/Item'
 import { Typography, Rating, Stack } from '@mui/material'
-import { Context } from '../../context/MainContext';
 import { useContext, useState } from 'react'
+import { Context } from '../../context/MainContext';
 import { Link } from 'react-router-dom'
 
 const Home = () => {
 
-    const {data, getProducts} = useContext(Context)
+    const {data, getProducts, HalfRating} = useContext(Context)
 
     getProducts();
 
@@ -39,46 +40,17 @@ const Home = () => {
         return product.rating.rate >= 4.7
     })    
 
-    const HalfRating = (product) => {
-        return (
-            <Stack spacing={1}>
-                {/* <Rating name="half-rating" defaultValue={2.5} precision={0.5} /> */}
-                <Rating className="half-rating-read mb-4" defaultValue={product.rating.rate} precision={0.5} readOnly />
-            </Stack>
-        );
-    }
-
-    const cardItem = (product) => {
-        const [isShown, setIsShown] = useState(false)
-        return (
-            <div 
-                className="card mt-5 shadow-lg featured-card text-start d-flex justify-content-center align-items-center flex-column" 
-                id={product.id} 
-                key={product.id}
-                onMouseEnter={() => setIsShown(true)}
-                onMouseLeave={() =>setIsShown(false)}
-            >
-                <div className="card-img d-flex justify-content-center align-items-center p-relative">
-                    {isShown && <ul className='list-unstyled d-flex justify-content-center align-items-center gap-3'>
-                        <li><i className="bi bi-cart"></i></li>
-                        <li><i className="bi bi-heart"></i></li>
-                    </ul>}
-                    <img src={product.image} className="card-img-top my-4 " alt="..."/>
-                </div>
-                <div className="card-body text-center mt-4">
-                    <p className=" product-title">{product.title}</p>
-                    <h5 className=" product-price text-center fw-bold mb-0">$ {product.price}</h5>
-                </div>
-                {HalfRating(product)}
-                <div className="btn add-to-cart-btn ">
-                    View Details
-                </div>
-            </div> 
-        )
-    }
-
     const featured_cards = topRatingProducts.map((product) => {
-        return cardItem(product)
+        return (
+            <Item
+                id={product.id}
+                key={product.id}
+                product={product}
+                title={product.title}
+                price={product.price}
+                image={product.image}
+            />
+        )
     })
 
     return ( 
@@ -140,16 +112,16 @@ const Home = () => {
                 <div className="container-lg mt-5">
                     <div className="row">
                         <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                            {offer_card(<i class="bi bi-building-fill-gear"></i>)}
+                            {offer_card(<i className="bi bi-building-fill-gear"></i>)}
                         </div>
                         <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                            {offer_card(<i class="bi bi-bank"></i>)}
+                            {offer_card(<i className="bi bi-bank"></i>)}
                         </div>
                         <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                            {offer_card(<i class="bi bi-trophy"></i>)}
+                            {offer_card(<i className="bi bi-trophy"></i>)}
                         </div>
                         <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-                            {offer_card(<i class="bi bi-bag-check-fill"></i>)}
+                            {offer_card(<i className="bi bi-bag-check-fill"></i>)}
                         </div>
                     </div>
                 </div> 
@@ -197,12 +169,12 @@ const Home = () => {
                                     <p className='w-100 mt-4'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, rem aliquid assumenda voluptates quisquam perspiciatis ipsa nisi si eos?</p>
                                 <div className="row">
                                     <div className="col-6">
-                                        <p><i class="bi bi-check-lg"></i> Material expose like metals</p>
-                                        <p><i class="bi bi-check-lg"></i> Clear lines and geomatric figures</p>
+                                        <p><i className="bi bi-check-lg"></i> Material expose like metals</p>
+                                        <p><i className="bi bi-check-lg"></i> Clear lines and geomatric figures</p>
                                     </div>
                                     <div className="col-6">
-                                        <p><i class="bi bi-check-lg"></i> Simple neutral colours.</p>
-                                        <p><i class="bi bi-check-lg"></i> Material expose like metals</p>
+                                        <p><i className="bi bi-check-lg"></i> Simple neutral colours.</p>
+                                        <p><i className="bi bi-check-lg"></i> Material expose like metals</p>
                                     </div>
                                 </div>
                                 {shopNowBtn()}
