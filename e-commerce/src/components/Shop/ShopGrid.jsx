@@ -1,40 +1,70 @@
 import "../../css/ShopGrid.css";
 import SubHeader from "../SubHeader";
 import Item from "./Item";
+import { useMemo } from "react";
 import React, { useContext, useState } from "react";
 import { Container } from "@mui/system";
 import { Context } from "../../context/MainContext";
 import { Typography, Rating, Stack } from '@mui/material'
 import { Grid } from "@mui/material";
-import {Box, InputLabel, MenuItem, FormControl, Select} from "@mui/material";
+import {Box, InputLabel, MenuItem, FormControl, Select, Slider} from "@mui/material";
 
 function ShopGrid() {
 
-  const { data, getProducts, category, handleCategoryChange } = useContext(Context);
-  const [price, setPrice] = useState('');
-  const [products, setProducts] = useState([])
+  const { data } = useContext(Context);
 
-  category ? getProducts(`products/category/${category}`) : getProducts();
+  const [category, setCategory] = useState('');
+  const [price, setPrice] = useState('')
+  const [rate, setRate] = useState('')
 
-  // const items = data.map((product) => {
-  //   return (
-  //     <Grid item xs={12} sm={6} md={4} lg={3}>
-  //       <Item
-  //         key={product.id}
-  //         image={product.image}
-  //         category={product.category}
-  //         title={product.title}
-  //         price={product.price}
-  //       />
-  //     </Grid>
-  //   );
-  // });
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
+    console.log(category)
+  };
 
-  const featured_cards = products.map((product) => {
+  function getFilteredCategoryList() {
+    if(!category) {
+      return data;
+    }
+    return data.filter((product) => product.category === category)
+  }
+
+  const filteredCategoryList = useMemo(getFilteredCategoryList, [category, data])
+
+  const handlePriceChange = (event) => {
+    setPrice(event.target.value)
+    console.log(price)
+  }
+
+  function getFilteredPriceList() {
+    if(!price) {
+      return filteredCategoryList;
+    }
+    return filteredCategoryList.filter((product) => product.price > parseInt(price, 10))
+  }
+
+  const filteredPriceList = useMemo(getFilteredPriceList, [price, filteredCategoryList])
+
+
+  const handleRateChange = (event) => {
+    setRate(event.target.value)
+    console.log(rate)
+  }
+
+  function getFilteredRateList () {
+    if(!rate) {
+      return filteredPriceList;
+    }
+    return filteredPriceList.filter((product) => product.rating.rate >= rate)
+  }
+
+  const filteredRateList = useMemo(getFilteredRateList, [rate, filteredPriceList])
+
+  const featured_cards = filteredRateList.map((product, index) => {
     return (
       <Item
         id={product.id}
-        key={product.id}
+        key={index}
         product={product}
         title={product.title}
         price={product.price}
@@ -42,16 +72,6 @@ function ShopGrid() {
       />
     )
   })
-  console.log(featured_cards)
-
-  const handlePriceChange = (event) => {
-    setPrice(event.target.value)
-    setProducts(data.filter((product) => {
-      if(product.price < price) {
-        return product
-      }
-    }))
-  }
 
   return (
     <div className="shopgrid">
@@ -84,22 +104,27 @@ function ShopGrid() {
                 <MenuItem value={"women's clothing"}>women's clothing</MenuItem>
               </Select>
             </FormControl>
-            <FormControl>
-            <InputLabel id="demo-simple-select-label" >Price</InputLabel >
-              <Select
-                className="category-field"
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
+            <br />
+            <Box width={300}>
+              <Slider
                 value={price}
-                label="Category"
+                aria-label="Temperature"
+                defaultValue={0}
+                valueLabelDisplay="auto"
+                step={50}
+                marks
+                min={0}
+                max={1000}
                 onChange={handlePriceChange}
-              >
-                <MenuItem value={"20"}>$0.00 - $20.00</MenuItem>
-                <MenuItem value={"60"}>$20.00 - $60.00</MenuItem>
-                <MenuItem value={"80"}>$60.00 - $100.00</MenuItem>
-                <MenuItem value={"120"}>$100.00 - 120.00</MenuItem>
-              </Select> 
-            </FormControl>
+              />
+            </Box>
+            <Rating 
+              name="size-large"
+              defaultValue={0} 
+              size="large" 
+              value={rate}
+              onChange={handleRateChange}
+            />
           </Box>
         </div>
       </div>
@@ -127,3 +152,20 @@ function ShopGrid() {
 }
 
 export default ShopGrid;
+
+// category ? getProducts(`products/category/${category}`) : getProducts();
+
+  // const items = data.map((product) => {
+  //   return (
+  //     <Grid item xs={12} sm={6} md={4} lg={3}>
+  //       <Item
+  //         key={product.id}
+  //         image={product.image}
+  //         category={product.category}
+  //         title={product.title}
+  //         price={product.price}
+  //       />
+  //     </Grid>
+
+  //   );
+  // });

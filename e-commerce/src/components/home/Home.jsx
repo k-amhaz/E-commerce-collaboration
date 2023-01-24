@@ -12,9 +12,7 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
 
-    const {data, getProducts, HalfRating} = useContext(Context)
-
-    getProducts();
+    const {data, HalfRating} = useContext(Context)
 
     const offer_card = (icon) => {
         return (
@@ -40,11 +38,11 @@ const Home = () => {
         return product.rating.rate >= 4.7
     })    
 
-    const featured_cards = topRatingProducts.map((product) => {
+    const featured_cards = topRatingProducts.map((product, index) => {
         return (
             <Item
                 id={product.id}
-                key={product.id}
+                key={index}
                 product={product}
                 title={product.title}
                 price={product.price}

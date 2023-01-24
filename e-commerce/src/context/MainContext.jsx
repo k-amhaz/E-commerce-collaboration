@@ -1,6 +1,7 @@
-import { createContext, useState } from "react";
 import { useEffect } from "react";
+import { createContext, useState } from "react";
 import { Typography, Rating, Stack } from '@mui/material'
+import { useMemo } from "react";
 
 const Context = createContext();
 const { Provider } = Context;
@@ -8,16 +9,14 @@ const { Provider } = Context;
 const ContextProvider = (props) => {
 
   const [data, setData] = useState([]);
-  const [category, setCategory] = useState('');
-  const [price, setPrice] = useState('');
 
-  function getProducts (path = 'products') {
-    useEffect(() => {
-      fetch(`https://fakestoreapi.com/${path}`)      
-        .then((res) => res.json())
-        .then((data) => setData(data))
-    }, [category]);
-  }
+  // const [price, setPrice] = useState('');
+
+  useEffect(() => {
+    fetch(`https://fakestoreapi.com/products`)      
+      .then((res) => res.json())
+      .then((data) => setData(data))
+  }, []);
 
   const getActiveItem = (itemsArray) => {
     itemsArray.forEach((child) => {
@@ -39,19 +38,11 @@ const ContextProvider = (props) => {
     );
   }
 
-  const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
-  };
-  
-
   return (
     <Provider value={
         { data, 
-          category, 
-          price, 
-          handleCategoryChange, 
-          handlePriceChange, 
-          getProducts, 
+          // prsice,
+          // handlePriceChange,
           getActiveItem, 
           HalfRating,
         }
