@@ -7,7 +7,6 @@
 body {
     margin: 0;
     padding: 0;
-    
 }
 
 .featured-card {
@@ -58,16 +57,19 @@ body {
         }
         .product-price{font-size: 22px;}
     }
-    .add-to-cart-btn {
+    .link-btn {
         background-color: var(--pink-color);
-        color: white;
         width: 100%;
-        border-top-right-radius: 0px;
+        text-align: center;
         border-top-left-radius: 0px;
-        padding-top: 10px;
-        padding-bottom: 10px;
+        border-top-right-radius: 0px;
+        padding-bottom: 8px;
+        padding-top: 8px;
+        cursor: pointer;
+        color: white !important;
     }
 }
+
 
 .home {
     overflow: hidden;

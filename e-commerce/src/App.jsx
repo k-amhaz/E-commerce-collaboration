@@ -8,21 +8,23 @@ import SubHeader from "./components/SubHeader";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/home/Home";
 import ShopGrid from './components/Shop/ShopGrid';
+import Details from "./components/Shop/Details";
 // import PrivateRoute from './Components/auth/PrivateRoute'
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <Routes>
-        {/* <Route element={<PrivateRoute/>}>
-          <Route path={'/Home'} element={<Home/>}/>
-        </Route> */}
-        <Route path={"/"} element={<Home />} />
-        <Route path="/shop" element={<ShopGrid />} />
-        <Route path={"/signup"} element={<SignUp />} />
-        <Route path={"/login"} element={<SignIn />} />
-      </Routes>
+        <Routes>
+          {/* <Route element={<PrivateRoute/>}>
+            <Route path={'/Home'} element={<Home/>}/>
+          </Route> */}
+          <Route exact path={"/"} element={<Home />} />
+          <Route path="/shop" element={<ShopGrid />} />
+          <Route path={"/details"} element={<Details />} />
+          <Route path={"/signup"} element={<SignUp />} />
+          <Route path={"/login"} element={<SignIn />} />
+        </Routes>
       <Footer />
     </div>
   );

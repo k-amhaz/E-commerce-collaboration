@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 
 const Home = () => {
 
-    const {data, HalfRating} = useContext(Context)
+    const {data, HalfRating, linkBtn} = useContext(Context)
 
     const offer_card = (icon) => {
         return (
@@ -21,16 +21,6 @@ const Home = () => {
                 <h5 className='mt-3'>24/7 Support</h5>
                 <p className='mt-2'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione incidunt quasi maiore.</p>
             </div>
-        )
-    }
-
-    const shopNowBtn = () => {
-        return (
-            <Link to='/shop'>
-                <div className="btn mt-4">
-                    Shop Now
-                </div>
-            </Link>
         )
     }
 
@@ -73,7 +63,7 @@ const Home = () => {
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing
                             in phasellus non in justo.
                         </Typography>
-                        {shopNowBtn()}
+                        {linkBtn('/shop', 'Shop Now')}
                     </div>
                     <div className="right d-none d-lg-block">
                         <div className="discount  d-flex justify-content-center align-items-center ">
@@ -175,7 +165,7 @@ const Home = () => {
                                         <p><i className="bi bi-check-lg"></i> Material expose like metals</p>
                                     </div>
                                 </div>
-                                {shopNowBtn()}
+                                {linkBtn('/shop', 'Shop Now', 'btn mt-4')}
                             </div>
                         </div>
                         <div className="col-6 d-flex justify-content-center">
@@ -193,11 +183,11 @@ const Home = () => {
                     <img src={reactangle_img} alt="" />
                 </div>
                 <div className="container-lg d-flex justify-content-center align-items-center text-center">
-                    <div className="content w-100 text-center">
+                    <div className="content w-100 text-center mt-0 mt-lg-4">
                         <div className="styled-h2 ">
                         Get Leatest Update By Subscribe 0ur Newslater
                         </div>
-                        {shopNowBtn()}
+                        {linkBtn('/shop', 'Shop Now', 'btn mt-4')}
                     </div>
                 </div>
             </div>

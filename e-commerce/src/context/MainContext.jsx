@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { createContext, useState } from "react";
-import { Typography, Rating, Stack } from '@mui/material'
+import { Typography, Rating, Stack, Button } from '@mui/material'
 import { useMemo } from "react";
+import { Link } from "react-router-dom";
 
 const Context = createContext();
 const { Provider } = Context;
@@ -9,8 +10,7 @@ const { Provider } = Context;
 const ContextProvider = (props) => {
 
   const [data, setData] = useState([]);
-
-  // const [price, setPrice] = useState('');
+  const [linkedProduct, setLinkedProduct] = useState('')
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products`)      
@@ -38,15 +38,39 @@ const ContextProvider = (props) => {
     );
   }
 
+  const handleLinkedBtn = (event) => {
+    setLinkedProduct(event.target)
+  }
+
+  const addToCartBtn = (text, icon, outlined) => {
+    return (
+      <Button className="add-to-cart-btn btn" endIcon={icon} variant={outlined}>
+        {text}
+      </Button>
+    )
+  }
+
+
+  const linkBtn = (to, btnText, id) => {
+    return (
+      <Link to={`${to}`} className='link-btn btn' onClick={(event) => handleLinkedBtn(event)} id={id}>  
+        {btnText}
+      </Link>
+    )
+  }
+
   return (
-    <Provider value={
-        { data, 
-          // prsice,
-          // handlePriceChange,
+    <Provider 
+      value={
+        { data,
           getActiveItem, 
           HalfRating,
+          linkBtn,
+          linkedProduct,
+          addToCartBtn,
         }
-      }>
+      }
+    >
       {props.children}
     </Provider>
   );

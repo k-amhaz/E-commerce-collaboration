@@ -1,12 +1,12 @@
 import React from "react";
 import "../../css/Item.css";
-import { Card } from "@mui/material";
+import { Link } from "@mui/material";
 import { useContext, useState } from "react";
 import { Context } from "../../context/MainContext";
 
 export default function Item(props) {
 
-  const {HalfRating} = useContext(Context)
+  const {HalfRating, linkBtn} = useContext(Context)
 
   const [isShown, setIsShown] = useState(false)
 
@@ -30,9 +30,12 @@ export default function Item(props) {
               <h5 className=" product-price text-center fw-bold mb-0">$ {props.price}</h5>
           </div>
           {HalfRating(props.product)}
-          <div className="btn add-to-cart-btn ">
-              View Details
-          </div>
+          {linkBtn('/details', 'View Details', props.id)}
+            {/* <button className="btn add-to-cart-btn ">
+              <Link to='/details'>
+                View Details
+              </Link>
+            </button> */}
       </div> 
   )
 }
