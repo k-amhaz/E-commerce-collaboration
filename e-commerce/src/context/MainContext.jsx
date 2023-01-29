@@ -38,6 +38,7 @@ const ContextProvider = (props) => {
     );
   }
 
+
   const handleLinkedBtn = (event) => {
     setLinkedProduct(event.target)
   }

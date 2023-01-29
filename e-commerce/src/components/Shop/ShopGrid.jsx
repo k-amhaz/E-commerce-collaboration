@@ -80,7 +80,7 @@ function ShopGrid() {
         path='ShopList'
       />
       <div className="section-details">
-        <div className="container-lg d-flex justify-content-between align-items-end">
+        <div className="container-lg d-block d-md-flex justify-content-between align-items-end">
           <div className="details">
             <div className="styled-h2 mt-5 text-start">
               Ecommerce Acceories & Fashion item 

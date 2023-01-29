@@ -4,7 +4,7 @@ import { Context } from "../../context/MainContext";
 import Item from "./Item";
 import { Button } from '@mui/material';
 import SubHeader from '../SubHeader';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 const Details = () => {
 
@@ -44,13 +44,13 @@ const Details = () => {
                                             </div>
                                             <p className='price d-flex gap-3 fw-bold'>
                                                 ${product.price}
-                                                <span>${product.price}</span>
+                                                <span>${product.price * 2}</span>
                                             </p>
                                             <p className='description-title mt-4 fw-bold'>Description</p>
                                             <p className='description m-0 mt-1 lh-lg'>{product.description}</p>
                                         </div>
                                         <div className="product-footer mt-3">
-                                            {addToCartBtn('Add To Cart',<FavoriteBorderIcon/>)}
+                                            {addToCartBtn('Add To Cart',<ShoppingCartOutlinedIcon/>)}
                                         </div>
                                     </div>
                                 </div>

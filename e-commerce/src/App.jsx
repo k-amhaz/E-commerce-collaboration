@@ -9,6 +9,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./components/home/Home";
 import ShopGrid from './components/Shop/ShopGrid';
 import Details from "./components/Shop/Details";
+import AboutUs from "./components/AboutUs";
 // import PrivateRoute from './Components/auth/PrivateRoute'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route exact path={"/"} element={<Home />} />
           <Route path="/shop" element={<ShopGrid />} />
           <Route path={"/details"} element={<Details />} />
+          <Route exact path={"/about"} element={<AboutUs />} />
           <Route path={"/signup"} element={<SignUp />} />
           <Route path={"/login"} element={<SignIn />} />
         </Routes>

@@ -5,7 +5,7 @@ import { Context } from "../../context/MainContext";
 
 const Navbar = () => {
 
-  const {getActiveItem} = useContext(Context)
+  const {getActiveItem, linkBtn,} = useContext(Context)
   
   const lis = document.querySelectorAll(".navbar ul li a");  
 
@@ -32,24 +32,24 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="#">
-                  Home
-                </a>
+                {linkBtn('/', 'Home')}  
+                {/* <a className="nav-link" aria-current="page" href="#">
+                </a> */}
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Categories
-                </a>
+                {linkBtn('/shop', 'Shop')}
+                {/* <a className="nav-link" href="#">
+                </a> */}
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Shop
-                </a>
+                {linkBtn('/about', 'About')}
+                {/* <a className="nav-link" href="#">
+                </a> */}
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Contact
-                </a>
+                {linkBtn('/contact', 'Contact')}
+                {/* <a className="nav-link" href="#">
+                </a> */}
               </li>
             </ul>
           </div>

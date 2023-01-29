@@ -1,0 +1,101 @@
+:root {
+    --pink-color: #FB2E86;
+    --sub-text-color: #8A8FB9;
+    --third-color: #696ba0;
+    --fourth-color: #101750;
+    box-sizing: border-box !important;
+}
+
+.about-us {
+    .introduction {
+        .intro-img {
+            position: relative;
+            width: 350px;
+            margin-right: 20px;
+                &::after {
+                    position: absolute;
+                    content: '';
+                    width: 100%;
+                    height: calc(100% + 20px);
+                    background: #2B3CAB;
+                    left: -20px;
+                    top: 0px;
+                    z-index: -1;
+                    border-radius: 6px;
+                }
+            img {
+                width: 100%;
+                border-radius: 6px;
+            }
+        }
+        .intro-text {
+            p {color: var(--sub-text-color);}
+            .about-us-btn {
+                background-color: var(--pink-color);
+                color: white;
+                padding: 5px 25px;
+                border-radius: 3px;
+            }
+        }
+        @media (max-width: 720px) {
+            .intro-img::after {
+                display: none;
+            }
+        }
+    }
+    .features {
+        h4 {color: var(--fourth-color);}
+        p  {color: var(--sub-text-color);}
+        i {
+            font-size: 35px;
+            color: var(--pink-color);
+        }
+        .card {
+            display: flex;
+            gap: 10px;
+            border: none;
+            position: relative;
+            &::after {
+                content: '';
+                position: absolute;
+                width: 0%;
+                height: 1px;
+                background-color: var(--pink-color);
+                bottom: 0;
+                left: 0;
+                border-radius: 6px;
+                transition: 1s !important;
+            }
+            &:hover::after {
+                width: 100%;
+            }
+        }
+    }
+    .clients-reviews {
+        .clients-imgs {
+            margin-top: 50px;
+            img {
+                border-radius: 50%;
+                width: 80px;
+                height: 80px;
+                &:nth-child(2) {
+                    transform: translateY(-20px);
+                }
+            }
+        }
+        .client-talks {
+            p {
+                width: 700px;
+                color: var(--sub-text-color);
+            }
+        }
+        @media (max-width: 720px) {
+            .client-talks {
+                p {
+                    margin-top: 20px;
+                    max-width: 350px;
+                }
+            }
+        }
+    }
+}
