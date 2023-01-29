@@ -24,15 +24,15 @@ const Details = () => {
             />
             {detailedProduct.map((product, index) => {
                 return(
-                    <div className="product-details" id={product.id} key={index}>
+                    <div className="product-details px-0" id={product.id} key={index}>
                         <div className="container-lg mt-5 mb-5">
-                            <div className="card shadow-lg py-5 px-3 d-flex">
-                                <div className="row d-flex justify-content-center align-items-center">
-                                    <div className="col-4 text-center">
+                            <div className="card shadow-lg py-5 px-3 d-flex ">
+                                <div className="row d-flex justify-content-center align-items-center gap-5 gap-lg-0">
+                                    <div className="col-12 col-lg-4 text-center">
                                         <img src={product.image} alt="" className="product-img"/>
                                     </div>
-                                    <div className="col-8 ">
-                                        <div className="product-title ">
+                                    <div className="col-12 col-lg-8 ">
+                                        <div className="product-title">
                                             <div className="styled-h2 text-start">
                                                 {product.title}
                                             </div>
