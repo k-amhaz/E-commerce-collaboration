@@ -73,7 +73,7 @@ const ContextProvider = (props) => {
 
       // console.log(finalItems)
 
-    	var cartItemJSON = JSON.stringify(finalItems);
+    	// var cartItemJSON = JSON.stringify(finalItems);
       // console.log(cartItemJSON)
 
       var cartArray = new Array();
