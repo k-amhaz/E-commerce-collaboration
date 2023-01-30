@@ -32,6 +32,9 @@
   background-color: #37DAF3;
   left: 100px;
 }
+.contact-us .contact-way .row {
+  margin-left: 35px;
+}
 .contact-us .contact-way .col-md-6 {
   margin-top: 10px;
   position: relative;
@@ -63,4 +66,23 @@
   .contact-us .contact-way .col-md-6::before {
     display: none;
   }
+  .contact-us .contact-way .row {
+    margin-left: 0px;
+    transform: translateX(-8px);
+  }
+}
+.contact-us .contact-form {
+  margin-top: 70px;
+  width: 100%;
+}
+.contact-us .contact-form .add-to-cart-btn {
+  background-color: var(--pink-color) !important;
+  color: white;
+  border-radius: 0px !important;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 8px 20px;
+  text-align: center;
+  cursor: pointer;
 }/*# sourceMappingURL=ContactUs.css.map */

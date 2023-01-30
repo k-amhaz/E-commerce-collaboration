@@ -43,9 +43,9 @@ const ContextProvider = (props) => {
     setLinkedProduct(event.target)
   }
 
-  const addToCartBtn = (text, icon, outlined) => {
+  const addToCartBtn = (text, icon, outlined, type) => {
     return (
-      <Button className="add-to-cart-btn btn" endIcon={icon} variant={outlined}>
+      <Button className="add-to-cart-btn btn" endIcon={icon} variant={outlined} type={type}>
         {text}
       </Button>
     )
@@ -59,6 +59,10 @@ const ContextProvider = (props) => {
       </Link>
     )
   }
+
+  // const addToCart = () => {
+
+  // }
 
   return (
     <Provider 

@@ -32,6 +32,9 @@
         }
     }
     .contact-way {
+        .row {
+            margin-left: 35px;
+        }
         .col-md-6 {
             margin-top: 10px;
             position: relative;
@@ -63,11 +66,23 @@
             .col-md-6 {
                 &::before {display: none;}
             }
+            .row {
+                margin-left: 0px;
+                transform: translateX(-8px);
+            }
         }
-        // @media (min-width: 721px) {
-        //     .col-mg-6 {
-        //         &::before {display: block;}
-        //     }
-        // }
+    }
+    .contact-form {
+        margin-top: 70px;
+        width: 100%;
+        .add-to-cart-btn {
+            background-color: var(--pink-color) !important;
+            color: white;
+            border-radius: 0px !important;
+            width: fit-content;
+            padding: 8px 20px;
+            text-align: center;
+            cursor: pointer;
+        }
     }
 }
