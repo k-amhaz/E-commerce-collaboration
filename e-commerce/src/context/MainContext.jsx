@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { createContext, useState } from "react";
+import { useEffect } from "react";
 import { Typography, Rating, Stack, Button } from '@mui/material'
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
@@ -11,6 +11,8 @@ const ContextProvider = (props) => {
 
   const [data, setData] = useState([]);
   const [linkedProduct, setLinkedProduct] = useState('')
+  const [cartItems, setCartItems] = useState([])
+  const [finalItems, setFinalItems] = useState([])
 
   useEffect(() => {
     fetch(`https://fakestoreapi.com/products`)      
@@ -43,6 +45,7 @@ const ContextProvider = (props) => {
     setLinkedProduct(event.target)
   }
 
+  
   const addToCartBtn = (text, icon, outlined, type) => {
     return (
       <Button className="add-to-cart-btn btn" endIcon={icon} variant={outlined} type={type}>
@@ -50,7 +53,6 @@ const ContextProvider = (props) => {
       </Button>
     )
   }
-
 
   const linkBtn = (to, btnText, id) => {
     return (
@@ -60,9 +62,39 @@ const ContextProvider = (props) => {
     )
   }
 
-  // const addToCart = () => {
+  const handleCartItems = (event) => {
 
-  // }
+    // setCartItems(prev => [prev, event.target.id])
+    // setCartItems(prev => [...prev ,event.target.id])
+    // console.log(cartItems)
+      setFinalItems(data.filter((product) => {
+        return product.id == parseInt(event.target.id)
+      }))
+
+      // console.log(finalItems)
+
+    	var cartItemJSON = JSON.stringify(finalItems);
+      // console.log(cartItemJSON)
+
+      var cartArray = new Array();
+      // If javascript shopping cart session is not empty
+      if (sessionStorage.getItem('shopping-cart')) {
+        cartArray = JSON.parse(sessionStorage.getItem('shopping-cart'));
+      }
+
+      cartArray.push(finalItems);
+
+      var cartJSON = JSON.stringify(cartArray);
+      sessionStorage.setItem('shopping-cart', cartJSON);
+
+      // console.log(cartArray)
+      // console.log(JSON.parse(cartJSON)[2])
+      
+    }
+
+    const handleFinalItems = (prod) => {
+      setFinalItems(prod)
+    }
 
   return (
     <Provider 
@@ -73,6 +105,10 @@ const ContextProvider = (props) => {
           linkBtn,
           linkedProduct,
           addToCartBtn,
+          handleCartItems,
+          cartItems,
+          finalItems,
+          handleFinalItems
         }
       }
     >

@@ -11,6 +11,7 @@ import ShopGrid from './components/Shop/ShopGrid';
 import Details from "./components/Shop/Details";
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
+import Cart from "./components/Cart";
 // import PrivateRoute from './Components/auth/PrivateRoute'
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path={"/about"} element={<AboutUs />} />
           <Route path={"/contact"} element={<ContactUs />} />
           <Route path={"/details"} element={<Details />} />
+          <Route path={"/cart"} element={<Cart />} />
           <Route path={"/signup"} element={<SignUp />} />
           <Route path={"/login"} element={<SignIn />} />
         </Routes>
@@ -33,5 +35,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

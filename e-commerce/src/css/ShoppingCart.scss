@@ -1,0 +1,61 @@
+:root {
+    --pink-color: #FB2E86;
+    --sub-text-color: #8A8FB9;
+    --third-color: #696ba0;
+    --fourth-color: #101750;
+    box-sizing: border-box !important;
+}
+
+.shopping-cart {
+
+    .cart-totals {
+        .card {
+            background-color: #F4F4FC;
+            border: none;
+        }
+
+        h5 {color: var(--fourth-color);}
+
+        .subtotals, .totals {
+            position: relative;
+
+            p{color: var(--fourth-color);}
+
+            &::after {
+                content: '';
+                position: absolute;
+                background-color: var(--sub-text-color);
+                width: 95%;
+                height: 2px;
+                bottom: 7px;
+                left: 2.5%;
+                opacity: .3;
+            }
+        }
+        .totals {
+            margin-top: 30px;
+        }
+
+        .shipping {
+            color: var(--sub-text-color);
+            font-size: 14px;
+            margin-left: 16px;
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: #19D16F;
+                left: -15px;
+                top: 5px;
+            }
+        }
+
+        .checkout-btn {
+            background: #19D16F;
+            color: white;
+        }   
+    }
+}

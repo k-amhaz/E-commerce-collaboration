@@ -1,0 +1,7 @@
+create the cart page
+design the cart page
+add the functionnality for the selected product
+make the design for the selected product
+make the total functionnality
+add the clear btn
+finish the buy proccessing

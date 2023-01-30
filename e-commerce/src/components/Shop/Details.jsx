@@ -8,7 +8,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 const Details = () => {
 
-    const {data, linkedProduct, HalfRating, addToCartBtn} = useContext(Context)
+    const {data, linkedProduct, HalfRating, handleCartItems, linkBtn} = useContext(Context)
     const [detailedProduct, setDetailedProduct] = useState([])
 
     useEffect(() => {
@@ -50,7 +50,14 @@ const Details = () => {
                                             <p className='description m-0 mt-1 lh-lg'>{product.description}</p>
                                         </div>
                                         <div className="product-footer mt-3">
-                                            {addToCartBtn('Add To Cart',<ShoppingCartOutlinedIcon/>)}
+                                            <Button 
+                                                endIcon={<ShoppingCartOutlinedIcon/>}
+                                                className="add-to-cart-btn"
+                                                onClick={handleCartItems}
+                                                id={product.id}
+                                                >
+                                                Add To Cart
+                                            </Button>
                                         </div>
                                     </div>
                                 </div>

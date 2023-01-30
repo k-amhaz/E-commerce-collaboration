@@ -1,12 +1,12 @@
 import React from "react";
 import "../../css/Item.css";
-import { Link } from "@mui/material";
+import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { Context } from "../../context/MainContext";
 
 export default function Item(props) {
 
-  const {HalfRating, linkBtn} = useContext(Context)
+  const {HalfRating, linkBtn, handleCartItems} = useContext(Context)
 
   const [isShown, setIsShown] = useState(false)
 
@@ -20,22 +20,18 @@ export default function Item(props) {
       >
           <div className="card-img d-flex justify-content-center align-items-center p-relative">
               {isShown && <ul className='list-unstyled d-flex justify-content-center align-items-center gap-3'>
-                  <li><i className="bi bi-cart"></i></li>
+                  <li><i className="bi bi-cart" id={props.id} onClick={handleCartItems}></i></li>
                   <li><i className="bi bi-heart"></i></li>
               </ul>}
               <img src={props.image} className="card-img-top my-4 " alt="..."/>
           </div>
+
           <div className="card-body text-center mt-4">
               <p className=" product-title">{props.title}</p>
               <h5 className=" product-price text-center fw-bold mb-0">$ {props.price}</h5>
           </div>
           {HalfRating(props.product)}
           {linkBtn('/details', 'View Details', props.id)}
-            {/* <button className="btn add-to-cart-btn ">
-              <Link to='/details'>
-                View Details
-              </Link>
-            </button> */}
       </div> 
   )
 }
