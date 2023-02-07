@@ -3,12 +3,71 @@ import "../../css/Item.css";
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { Context } from "../../context/MainContext";
+import { Alert } from "@mui/material";
 
 export default function Item(props) {
 
-  const {HalfRating, linkBtn, handleCartItems} = useContext(Context)
+  const {HalfRating, linkBtn, handleCartItems, handleRealItems, reducer, realItems} = useContext(Context)
 
   const [isShown, setIsShown] = useState(false)
+  const [isFavorited, setIsFavorited] = useState(false)
+
+  const addToBasket = () => {
+    // console.log(realItems)
+    reducer({
+        type: 'ADD_TO_BASKET',
+        item: {
+            id: props.id,
+            title: props.title,
+            image: props.image,
+            price: props.price,
+            description: props.description,
+            rating: props.rating,
+            count: props.rating.count,
+            rate: props.rating.rate,
+            product: props.product,
+        }
+    })
+    window.alert("Item is succefully added to cart!")
+  }
+
+  function decrementQuantity  () {
+    setQuantity(prev => prev >= 1 ? prev - 1 : prev)
+  }
+
+  function incrementQuantity ()  {
+    setQuantity(prev => prev + 1)    
+  }
+
+  const addToWishList = () => {
+    console.log(realItems)
+    reducer({
+        type: 'ADD_TO_WISHLIST',
+        item: {
+            id: props.id,
+            title: props.title,
+            image: props.image,
+            price: props.price,
+            description: props.description,
+            rating: props.rating,
+            count: props.rating.count,
+            rate: props.rating.rate,
+            product: props.product,
+        }
+    })
+    setIsFavorited(true)
+    window.alert("Item is succefully added to wishlist!")
+  }
+
+  const removeFromWishList = () => {
+    reducer({
+        type: 'REMOVE_FROM_WISHLIST',
+        item: {
+            id: props.id,
+        }
+    })
+    setIsFavorited(false)
+}
 
   return (
       <div 
@@ -20,8 +79,11 @@ export default function Item(props) {
       >
           <div className="card-img d-flex justify-content-center align-items-center p-relative">
               {isShown && <ul className='list-unstyled d-flex justify-content-center align-items-center gap-3'>
-                  <li><i className="bi bi-cart" id={props.id} onClick={handleCartItems}></i></li>
-                  <li><i className="bi bi-heart"></i></li>
+                    <li><i className="bi bi-cart" id={props.id} onClick={addToBasket}></i></li>
+                    <li>
+                        <i className="bi bi-heart"  id={props.id} onClick={addToWishList}></i>
+                    </li>
+                    
               </ul>}
               <img src={props.image} className="card-img-top my-4 " alt="..."/>
           </div>

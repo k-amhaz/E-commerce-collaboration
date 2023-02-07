@@ -1,23 +1,22 @@
 import "../../css/Navbar.css";
 import { useContext } from "react";
 import { Context } from "../../context/MainContext";
+import { Link } from "react-router-dom";
 
 
 const Navbar = () => {
 
   const {getActiveItem, linkBtn,} = useContext(Context)
-  
-  const lis = document.querySelectorAll(".navbar ul li a");  
-
-  getActiveItem(lis)
 
   return (
     <div className="down-header ">
       <nav className="navbar navbar-expand-md ">
         <div className="container-lg  gap-4 ">
-          <a className="navbar-brand" href="#">
-            Hekto
-          </a>
+          <Link to='/home' className='link-decoration'>
+            <a className="navbar-brand" href="#">
+              KO code
+            </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -32,7 +31,7 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item">
-                {linkBtn('/', 'Home')}  
+                {linkBtn('/home', 'Home')}  
                 {/* <a className="nav-link" aria-current="page" href="#">
                 </a> */}
               </li>

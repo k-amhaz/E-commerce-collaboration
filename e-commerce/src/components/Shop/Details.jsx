@@ -8,13 +8,30 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 const Details = () => {
 
-    const {data, linkedProduct, HalfRating, handleCartItems, linkBtn} = useContext(Context)
+    const {data, linkedProduct, HalfRating, handleCartItems, linkBtn, realItems, reducer} = useContext(Context)
     const [detailedProduct, setDetailedProduct] = useState([])
 
     useEffect(() => {
         setDetailedProduct(data.filter(product => product.id === parseInt(linkedProduct.id)))
     }, [])
 
+
+    const addToBasket = (product) => {
+        console.log(realItems)
+        reducer({
+            type: 'ADD_TO_BASKET',
+            item: {
+                id: product.id,
+                title: product.title,
+                image: product.image,
+                price: product.price,
+                description: product.description,
+                rating: product.rating,
+                product: product.product,
+            }
+        })
+        window.alert("Item is succefully added to cart!")
+    }
 
     return (
         <div className="details">
@@ -53,7 +70,7 @@ const Details = () => {
                                             <Button 
                                                 endIcon={<ShoppingCartOutlinedIcon/>}
                                                 className="add-to-cart-btn"
-                                                onClick={handleCartItems}
+                                                onClick={() => addToBasket(product)}
                                                 id={product.id}
                                                 >
                                                 Add To Cart

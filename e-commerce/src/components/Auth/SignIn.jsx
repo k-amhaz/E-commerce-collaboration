@@ -7,7 +7,7 @@ import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { styled } from "@mui/system";
 import { auth } from "../../data/DataBase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 
 const CssTextField = styled(TextField, {
   shouldForwardProp: (props) => props !== "focusColor",
@@ -37,6 +37,8 @@ export default function SignIn() {
     password: "",
   });
 
+  
+
   function handleChange(e) {
     const { name, value } = e.target;
     setUserData((prevUserData) => {
@@ -48,30 +50,47 @@ export default function SignIn() {
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-
-    const { email, password } = userData;
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        console.log(userData);
-      })
-      .catch((err) => console.log(err.message));
+    e.preventDefault()
+    
+    const email = e.target.email.value
+    const password = e.target.password.value
+    signInWithEmailAndPassword(auth, email,password)
+      // .then((cred) => {
+      //   // console.log(cred.user)
+        
+      // })
+      .then((cred) => {
+        console.log(cred.user)
+        window.location.assign('/home')}
+      )
+      .catch(err => window.alert(err))
   }
 
+
+  onAuthStateChanged(auth, (user) => {
+    console.log(user)
+  })
+
   return (
-    <>
+    <div className="d-flex justify-content-center align-items-center flex-column ">
       <SubHeader loc={"Account"} path="Log in" />
-      <div className="login-container">
-        <Card className="login-card">
+
+      {/* <Link to='/' className='mt-5'>
+        <a className="navbar-brand" href="#">
+          Hekto
+        </a>
+      </Link> */}
+      <div className="login-container m-4">
+        <div className="login-card card ">
           <h4>Log in</h4>
           <p>Please log in using account detail bellow</p>
-          <form className="login-form" onSubmit={handleSubmit}>
+          <form className="login-form"  onSubmit={(e) => handleSubmit(e)}>
             <CssTextField
               focusColor="#fb2e86"
               name="email"
               label="Email"
               variant="outlined"
-              onChange={handleChange}
+              onChange={(event) => handleChange(event)}
               value={userData.email}
               required
               fullWidth
@@ -83,15 +102,15 @@ export default function SignIn() {
               name="password"
               label="Password"
               variant="outlined"
-              onChange={handleChange}
+              onChange={(event) => handleChange(event)}
               value={userData.password}
               required
               fullWidth
               type={"password"}
               className="text-field"
             />
-            <p className="forgot">Forgot you password?</p>
-            <Button className="login-button" variant="contained" type="submit">
+            {/* <p className="forgot">Forgot you password?</p> */}
+            <Button className="login-button mt-4" variant="contained" type="submit">
               Sign in
             </Button>
           </form>
@@ -102,8 +121,10 @@ export default function SignIn() {
               Create account
             </Link>
           </p>
-        </Card>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
+
+//  onSubmit={handleSubmit}

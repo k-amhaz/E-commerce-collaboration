@@ -15,7 +15,9 @@
             overflow: hidden; 
             text-overflow: ellipsis !important; 
         }
-        .product-img {width: 250px !important;}
+        .product-img {
+            width: 250px !important;
+        }
         .product-body {
             .price {
                 color: var(--fourth-color);

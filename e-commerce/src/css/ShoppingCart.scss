@@ -7,8 +7,81 @@
 }
 
 .shopping-cart {
+    .table {
+        position: relative;
+        &::after {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 1px;
+            background-color: var(--sub-text-color);
+            right: -100px;
+            top: 0px;
+            opacity: 0.3;
+        }
+        @media (max-width: 768px) {
+            .table {
+                &::after {
+                    display: none;
+                }
+            }
+        }
+        th {color: var(--fourth-color);}
+        td {
+            padding-left: 0;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        .product {
+            td {display: flex; align-items: center; justify-content: center ;}
+            position: relative;
+            .product-img {
+                width: 100px !important;
+                height: 100px;
+                border-radius:25px !important;
+            }
+            .details {
+                h5 {
+                    width: 150px;
+                    white-space:nowrap; 
+                    overflow: hidden; 
+                    text-overflow: ellipsis !important; 
+                }
+                p {color: var(--sub-text-color);}
+            }
+            span {
+                position: absolute;
+                background-color: var(--fourth-color);
+                color: white;
+                width: 15px;
+                height: 15px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 14px;
+                padding: 6px;
+                cursor: pointer;
+            }
+        }
+        .price,.quantity, .product-total {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            transform: translateY(80%);
+            p {color: var(--fourth-color);}
+        }
+        .quantity {
+            color: var(--pink-color);
+            span {
+                color: var(--fourth-color);
+                cursor: pointer;
+            }
+        }
+    }
 
     .cart-totals {
+
         .card {
             background-color: #F4F4FC;
             border: none;
@@ -58,4 +131,14 @@
             color: white;
         }   
     }
+    .add-to-cart-btn {
+        background-color: var(--pink-color) !important;
+        color: white;
+        border-radius: 0px !important;
+        width: fit-content;
+        padding: 8px 20px;
+        text-align: center;
+        cursor: pointer;
+    }
+
 }

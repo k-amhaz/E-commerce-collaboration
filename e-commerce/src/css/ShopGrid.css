@@ -1,6 +1,55 @@
+:root {
+  --pink-color: #FB2E86;
+  --sub-text-color: #8A8FB9;
+  --third-color: #696ba0;
+  --fourth-color: #101750;
+  box-sizing: border-box !important;
+}
+
 .shopgrid {
   padding-bottom: 100px;
 }
 .shopgrid .section-details .category-field {
   width: 150px !important;
+}
+
+.custom-loader {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 8px solid rgba(0, 0, 0, 0);
+  border-right-color: rgba(118, 109, 244, 0.5921568627);
+  position: relative;
+  -webkit-animation: s4 1s infinite linear;
+          animation: s4 1s infinite linear;
+}
+
+.custom-loader:before,
+.custom-loader:after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: inherit;
+  -webkit-animation: inherit;
+          animation: inherit;
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+
+.custom-loader:after {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+}
+
+@-webkit-keyframes s4 {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes s4 {
+  100% {
+    transform: rotate(1turn);
+  }
 }/*# sourceMappingURL=ShopGrid.css.map */

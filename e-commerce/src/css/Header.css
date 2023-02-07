@@ -1,3 +1,11 @@
+:root {
+  --pink-color: #FB2E86;
+  --sub-text-color: #8A8FB9;
+  --third-color: #696ba0;
+  --fourth-color: #101750;
+  box-sizing: border-box !important;
+}
+
 .header p {
   margin: 0 !important;
   padding: 0 !important;
@@ -30,4 +38,106 @@
 }
 .header .bi-cart {
   font-size: 18px;
+}
+.header .dropdown-start {
+  position: relative;
+}
+.header .dropdown-start .add-to-cart-btn {
+  background-color: var(--pink-color) !important;
+  color: white;
+  border-radius: 0px !important;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 7px 12px;
+  text-align: center;
+  font-size: 15px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+.header .dropdown-start .add-btn {
+  background-color: var(--third-color) !important;
+  color: white;
+  border-radius: 5px !important;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 4px 6px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+.header .dropdown-start .dropdown-menu {
+  position: absolute !important;
+  left: -250px;
+  border: none;
+  margin-top: 10px !important;
+  max-width: 400px !important;
+  cursor: default !important;
+}
+.header .dropdown-start .dropdown-menu > div > p {
+  color: var(--pink-color) !important;
+  cursor: default;
+  font-size: 26px !important;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.header .dropdown-start .dropdown-menu h3 {
+  color: var(--fourth-color);
+  cursor: default;
+}
+.header .dropdown-start .dropdown-menu .link-btn {
+  background-color: var(--pink-color) !important;
+  color: white;
+  border-radius: 0px !important;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 8px 20px;
+  text-align: center;
+  cursor: pointer;
+}
+.header .dropdown-start .dropdown-menu .dropdown-item {
+  display: flex;
+  border-radius: 5px;
+  padding: 20px 20px;
+  cursor: default;
+}
+.header .dropdown-start .dropdown-menu .dropdown-item:hover {
+  background-color: white !important;
+}
+.header .dropdown-start .dropdown-menu .dropdown-item .item-img {
+  width: 80px !important;
+  height: 90px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: default;
+}
+.header .dropdown-start .dropdown-menu .dropdown-item .item-img img {
+  width: 100%;
+  height: 100%;
+}
+.header .dropdown-start .dropdown-menu .dropdown-item .item-details {
+  margin-top: 10px;
+  cursor: default;
+}
+.header .dropdown-start .dropdown-menu .dropdown-item .item-details p {
+  width: 150px;
+  color: var(--fourth-color) !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis !important;
+  cursor: default;
+  font-size: 14px !important;
+}
+.header .dropdown-start .dropdown-menu .dropdown-item .rm-wishlist {
+  color: var(--third-color);
+  cursor: pointer;
+  margin-top: 12px;
+}
+@media (max-width: 768px) {
+  .header .dropdown-menu {
+    left: -8px !important;
+  }
 }/*# sourceMappingURL=Header.css.map */

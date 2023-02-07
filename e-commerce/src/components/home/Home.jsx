@@ -37,9 +37,12 @@ const Home = () => {
                 title={product.title}
                 price={product.price}
                 image={product.image}
+                rating={product.rating}
             />
         )
     })
+
+    
 
     return ( 
         <div className="home">
@@ -82,14 +85,19 @@ const Home = () => {
                     Featured Products
                 </div>
                 <div className="container-lg ">
-                    <div className="row">
-                        {featured_cards.map((card) => {
-                            return (
-                                <div className="col-12 col-sm-6 col-md-4 col-lg-3 mt-5">
-                                    {card}
-                                </div>
-                            )
-                        })}
+                    <div className="row d-flex justify-content-center">
+                        {data.length 
+                            ? 
+                                featured_cards.map((card) => {
+                                    return (
+                                        <div className="col-12 col-sm-6 col-md-4 col-lg-3 mt-5">
+                                            {card}
+                                        </div>
+                                    )
+                                })
+                            :
+                                <div class="custom-loader mt-5"></div>
+                        }
                     </div>
                 </div>
             </div>
@@ -97,7 +105,7 @@ const Home = () => {
                 <div className="styled-h2">
                     What Shopex Offer!
                 </div>
-                <div className="container-lg mt-5">
+                <div className="container-lg mt-5 pt-5">
                     <div className="row">
                         <div className="col-12 col-sm-6 col-md-4 col-lg-3">
                             {offer_card(<i className="bi bi-building-fill-gear"></i>)}

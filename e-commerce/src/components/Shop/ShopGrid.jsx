@@ -69,6 +69,7 @@ function ShopGrid() {
         title={product.title}
         price={product.price}
         image={product.image}
+        rating={product.rating}
       />
     )
   })
@@ -87,8 +88,10 @@ function ShopGrid() {
             </div>
             <p className=''>Select A Specific Category</p>
           </div>
-          <Box className='text-center box' >
-            <FormControl>
+
+          <Box className=' d-flex flex-column justify-content-center align-items-center box' >
+            <h2 className="styled-h2 mt-4 p-2 d-md-none">Filter</h2>
+            <FormControl className='mt-4'>
               <InputLabel id="demo-simple-select-label" >Category</InputLabel >
               <Select
                 className="category-field"
@@ -135,14 +138,19 @@ function ShopGrid() {
             spacing={{ xs: 2, md: 3 }}
             columns={{ xs: 4, sm: 8, md: 12 }}
           > */}
-            <div className="row">
-              {featured_cards.map((card) => {
-                return (
-                  <div className="col-12 col-sm-6 col-md-4 col-lg-3 mt-5">
-                      {card}
-                  </div>
-                )
-              })}
+            <div className="row d-flex justify-content-center">
+              {data.length 
+                ? 
+                  featured_cards.map((card) => {
+                    return (
+                      <div className="col-12 col-sm-6 col-md-4 col-lg-3 mt-5">
+                          {card}
+                      </div>
+                    )
+                  })
+                :
+                <div class="custom-loader mt-5"></div>
+              }
             </div>
           {/* </Grid> */}
         </div>

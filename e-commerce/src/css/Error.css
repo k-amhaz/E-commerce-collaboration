@@ -1,0 +1,32 @@
+:root {
+  --pink-color: #FB2E86;
+  --sub-text-color: #8A8FB9;
+  --third-color: #696ba0;
+  --fourth-color: #101750;
+  box-sizing: border-box !important;
+}
+
+.error-page img {
+  max-width: 600px;
+}
+.error-page h5 {
+  color: var(--fourth-color);
+  font-size: 17px;
+}
+@media (min-width: 768px) {
+  .error-page .error-page h5 {
+    font-size: 18px;
+  }
+}
+.error-page button {
+  margin-top: 20px;
+  background-color: var(--pink-color);
+  padding: 10px 20px;
+}
+.error-page button:hover {
+  background-color: var(--pink-color);
+}
+.error-page button .link {
+  color: white !important;
+  text-decoration: none !important;
+}/*# sourceMappingURL=Error.css.map */

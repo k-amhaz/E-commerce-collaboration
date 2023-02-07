@@ -38,6 +38,9 @@ body {
 .featured-card .card-img ul li:hover {
   color: var(--pink-color);
 }
+.featured-card .card-img ul li i.bi-heart-fill {
+  color: var(--pink-color);
+}
 .featured-card .card-img img {
   transform: translateY(40px);
   width: 100px;
