@@ -1,44 +1,42 @@
 :root {
-    --second-color: #1A0B5B;
+  --second-color: #1a0b5b;
 }
 :root {
-    --pink-color: #FB2E86;
-    --sub-text-color: #8A8FB9;
-    --third-color: #696ba0;
-    --fourth-color: #101750;
-    box-sizing: border-box !important;
+  --pink-color: #fb2e86;
+  --sub-text-color: #8a8fb9;
+  --third-color: #696ba0;
+  --fourth-color: #101750;
+  box-sizing: border-box !important;
 }
 
-
-::-webkit-scrollbar  {
-    width: 15px;
+::-webkit-scrollbar {
+  width: 9px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--pink-color);
-    border-radius: 10px;
-    &:hover {
-        background-color: #d12b73;
-    }
+  background-color: var(--pink-color);
+  border-radius: 10px;
+  &:hover {
+    background-color: #d12b73;
+  }
 }
 
 body {
-    margin: 0 !important;
-    padding: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .styled-h2 {
-    color: var(--second-color);
-    font-weight: bold;
-    text-align: center;
-    font-size: 32px;
-    font-family: 'Josefin Sans';
+  color: var(--second-color);
+  font-weight: bold;
+  text-align: center;
+  font-size: 32px;
+  font-family: "Josefin Sans";
 }
 
 .section {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    padding-right: 20px;
-    padding-left: 20px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
-

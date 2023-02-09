@@ -1,17 +1,17 @@
 :root {
-  --second-color: #1A0B5B;
+  --second-color: #1a0b5b;
 }
 
 :root {
-  --pink-color: #FB2E86;
-  --sub-text-color: #8A8FB9;
+  --pink-color: #fb2e86;
+  --sub-text-color: #8a8fb9;
   --third-color: #696ba0;
   --fourth-color: #101750;
   box-sizing: border-box !important;
 }
 
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 9px;
 }
 
 ::-webkit-scrollbar-thumb {

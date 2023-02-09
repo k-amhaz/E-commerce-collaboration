@@ -20,8 +20,7 @@
   border: 8px solid rgba(0, 0, 0, 0);
   border-right-color: rgba(118, 109, 244, 0.5921568627);
   position: relative;
-  -webkit-animation: s4 1s infinite linear;
-          animation: s4 1s infinite linear;
+  animation: s4 1s infinite linear;
 }
 
 .custom-loader:before,
@@ -31,21 +30,12 @@
   inset: -8px;
   border-radius: 50%;
   border: inherit;
-  -webkit-animation: inherit;
-          animation: inherit;
-  -webkit-animation-duration: 2s;
-          animation-duration: 2s;
+  animation: inherit;
+  animation-duration: 2s;
 }
 
 .custom-loader:after {
-  -webkit-animation-duration: 4s;
-          animation-duration: 4s;
-}
-
-@-webkit-keyframes s4 {
-  100% {
-    transform: rotate(1turn);
-  }
+  animation-duration: 4s;
 }
 
 @keyframes s4 {

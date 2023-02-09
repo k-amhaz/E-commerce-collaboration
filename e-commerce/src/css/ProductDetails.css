@@ -47,7 +47,6 @@
   background-color: var(--pink-color) !important;
   color: white;
   border-radius: 0px !important;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   padding: 8px 20px;
