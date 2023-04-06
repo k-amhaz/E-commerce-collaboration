@@ -61,15 +61,15 @@ function App() {
           <Route element={<PrivateRoute/>}>
             <Route path={'/home'} element={<Home/>}/>
           </Route>
-          <Route exact path={"/"} element={<SignUp />} /> 
+          <Route exact path={"/"} element={<Home />} /> 
           <Route path="/shop" element={<ShopGrid />} />
           <Route path={"/about"} element={<AboutUs />} />
           <Route path={"/contact"} element={<ContactUs />} />
           <Route path={"/details"} element={<Details />} />
           <Route path={"/cart"} element={<Cart />} />
-          <Route path={"/signup"} element={<SignUp />} />
-          <Route path={"/login"} element={<SignIn />} />
-          <Route path={"/checkout"} element={<Checkout/>}></Route>
+          {/* <Route path={"/signup"} element={<SignUp />} />
+          <Route path={"/login"} element={<SignIn />} /> */}
+          <Route path={"/checkout"} element={<Checkout/>}/>
           <Route path={"*"} element={<Error />}/>
         </Routes>
       <Footer />

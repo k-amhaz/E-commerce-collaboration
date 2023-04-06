@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="footer">
         <div className="footer-links container-lg">
           <div className="footer-info">
-            <h3 className="footer-title">KO shop</h3>
+            <h3 className="footer-title">Hekto</h3>
             <div className="footer-phone-number footer-contact">
               <i className="fa-solid fa-phone"></i>
               <p>+1 (1234) 56789</p>
@@ -63,12 +63,14 @@ export default function Footer() {
         <footer>
           <div className="footer-bottom-container">
             <p>
-              <span>KO code</span> © 2023
+              <span>Hekto</span> © 2023
             </p>
             <div className="footer-icons">
-              <i className="fa-brands fa-instagram"></i>
-              <i className="fa-brands fa-linkedin"></i>
-              <i className="fa-brands fa-twitter"></i>
+              <ul>
+                <li><a href="https://www.instagram.com/allaw.dev/"><i className="fa-brands fa-instagram"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/ali-allaw-488b18270/"><i className="fa-brands fa-linkedin"></i></a></li>
+                <li><a href="https://wa.link/14pdm2"><i className="fa-brands fa-whatsapp"></i></a></li>
+              </ul>
             </div>
           </div>
         </footer>

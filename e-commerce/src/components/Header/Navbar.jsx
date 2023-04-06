@@ -12,7 +12,7 @@ const Navbar = () => {
         <div className="container-lg  gap-4 ">
           <Link to="/home" className="link-decoration">
             <a className="navbar-brand" href="#">
-              KO shop
+              Hekto
             </a>
           </Link>
           <button

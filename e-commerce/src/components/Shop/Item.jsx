@@ -20,6 +20,7 @@ export default function Item(props) {
 
   const addToBasket = () => {
     // console.log(realItems)
+    window.alert("item is successfully added to cart")
     reducer({
       type: "ADD_TO_BASKET",
       item: {
