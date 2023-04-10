@@ -18,7 +18,7 @@ const Cart = () => {
         if(!realItems.basket.length) {
             return window.alert("Your basket is empty")
         } else {
-            window.location.assign("/checkout")
+            window.location.href="/checkout"
         }
     }
 
@@ -141,7 +141,7 @@ const Cart = () => {
                                 <Button 
                                     fullWidth
                                     className="checkout-btn mt-3"
-                                    onClick={handleCheckout}
+                                    onClick={() =>handleCheckout()}
                                     >
                                         Proceed To Checkout
                                 </Button>
