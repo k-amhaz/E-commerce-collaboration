@@ -14,6 +14,11 @@
   width: 9px;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
 ::-webkit-scrollbar-thumb {
   background-color: var(--pink-color);
   border-radius: 10px;

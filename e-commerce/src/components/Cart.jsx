@@ -4,6 +4,7 @@ import Item from './Shop/Item';
 import { Button, useThemeProps, Alert } from "@mui/material";
 import { useContext, useState, useEffect } from 'react';
 import { Context } from '../context/MainContext';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
     const {cartItems, data , addToCartBtn, realItems, subtotals, getRealItemsTotal, reducer} = useContext(Context)
@@ -14,13 +15,13 @@ const Cart = () => {
         })
     }
 
-    const handleCheckout = () => {
-        if(!realItems.basket.length) {
-            return window.alert("Your basket is empty")
-        } else {
-            window.location.href="/checkout"
-        }
-    }
+    // const handleCheckout = () => {
+    //     if(!realItems.basket.length) {
+    //         return window.alert("Your basket is empty")
+    //     } else {
+    //         window.location.href="/checkout"
+    //     }
+    // }
 
 
     return (  
@@ -141,9 +142,8 @@ const Cart = () => {
                                 <Button 
                                     fullWidth
                                     className="checkout-btn mt-3"
-                                    onClick={() =>handleCheckout()}
-                                    >
-                                        Proceed To Checkout
+                                >
+                                    <Link to='/checkout'>Proceed To Checkout</Link>
                                 </Button>
                             </div>
                         </div>
@@ -155,30 +155,3 @@ const Cart = () => {
 }
  
 export default Cart;
-
-// {items.map((products) => {
-//     return products.map((product) => {
-        
-//         return (
-//             <div className="product-card mt-3" id={product.id} key={product.id}>
-//                 <div className="row">
-//                     <div className="product col-6 d-flex gap-2">
-//                         <img src={product.image} alt="" className='w-25'/>
-//                         <div className="details">
-//                             <h5>{product.title}</h5>
-//                             <p>Size XL</p>
-//                         </div>
-//                     </div>
-//                     <div className="price col-2">
-//                         <p>{product.price}</p>
-//                     </div>
-//                     <div className="Quantity col-2">
-//                         <p>1</p>
-//                     </div>
-//                     <div className="product-total col-2">
-//                         <p>$999</p>
-//                     </div>
-//                 </div>
-//             </div>
-//         )
-//     })}) }
